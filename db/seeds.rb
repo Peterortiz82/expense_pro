@@ -4,8 +4,7 @@ SubCategory.destroy_all
 
 # Category names
 category = ['Clothing', 'Education', 'Fitness', 'Food', 'Fun Money', 'Gifts', 'Giving',
-            'Household Items/Supplies', 'Personal', 'Retirement', 'Shelter',
-            'Transportation', 'Other']
+            'Household Items/Supplies', 'Personal', 'Transportation', 'Other']
 
 # Add Category names to the db
 category.each do |cat_name|

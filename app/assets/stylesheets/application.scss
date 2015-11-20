@@ -1,7 +1,18 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.col-centered{
+label {
+	font-size: 1.5em;
+	margin-top: 6px;
+	margin-bottom: 0px;
+	color: #2E6DA4;
+}
+
+h2 {
+	color: #2E6DA4;
+}
+
+.col-centered {
 	text-align: center;
 	float: none;
 	margin: 0 auto;
