@@ -8,27 +8,15 @@ $(document).ready(function () {
 		if (options) {
 			$('#expense_sub_category_id').html(options);
 			$('label[for="expense_name"]').hide();
-			$('#expense_amount').hide();
+			$('#expense_name').hide();
 			$('label[for="expense_sub_category_id"]').show();
 			$('#expense_sub_category_id').show();
 		} else {
 			$('label[for="expense_name"]').show();
-			$('#expense_amount').show();
+			$('#expense_name').show();
 			$('#expense_sub_category_id').empty();
 			$('#expense_sub_category_id').hide();
+			$('label[for="expense_sub_category_id"]').hide();
 		}
 	});
 });
-
-//function carrierChange() {
-//	$('#prepaid #sprint_sale_sprint_handset_id optgroup').hide();
-//	$('#prepaid #sprint_sale_sprint_handset_id').val('');
-//	var carriers = $('#prepaid #sprint_sale_sprint_carrier_id :selected').text();
-//	$("#prepaid #sprint_sale_sprint_handset_id optgroup[label='" + carriers + "']").show();
-//
-//	$("#prepaid #sprint_sale_sprint_rate_plan_id optgroup").hide();
-//	$("#prepaid #sprint_sale_sprint_rate_plan_id").val('');
-//	var carriers = $('#prepaid #sprint_sale_sprint_carrier_id :selected').text();
-//	$("#prepaid #sprint_sale_sprint_rate_plan_id optgroup[label='" + carriers + "']").show();
-//	checkForUpgrade();
-//}

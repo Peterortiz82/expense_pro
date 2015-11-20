@@ -1,6 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html,body {
+	height:100%;
+	margin: 0;
+	background: -webkit-linear-gradient(white, #D3D8E8);
+	background: linear-gradient(white, #D3D8E8);
+}
+
 label {
 	font-size: 1.5em;
 	margin-top: 6px;
@@ -12,6 +19,26 @@ h2 {
 	color: #2E6DA4;
 }
 
+.navbar-default .navbar-nav > li > a {
+	color: #2E6DA4;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #418CC6;
+}
+
+.navbar-default .navbar-brand {
+	color: #2E6DA4;
+}
+
+.navbar-default .navbar-brand:hover {
+	color: #418CC6;
+}
+
+.navbar-default {
+	background-color: #FFFFFF;
+}
+
 .col-centered {
 	text-align: center;
 	float: none;
@@ -20,6 +47,10 @@ h2 {
 
 #form-reg {
 	text-align: left;
+}
+
+.panel-default {
+	margin-bottom: 50px;
 }
 
 .jumbotron {
