@@ -1,2 +1,5 @@
-%h1 Welcome#index
-%p Find me in app/views/welcome/index.html.haml
+.jumbotron
+  .h1 Expense Tracker
+  = link_to 'Sign in', user_session_path, class: 'btn btn-primary btn-lg'
+  OR
+  = link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary btn-lg'

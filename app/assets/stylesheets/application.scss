@@ -1,2 +1,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.col-centered{
+	text-align: center;
+	float: none;
+	margin: 0 auto;
+}
+
+#form-reg {
+	text-align: left;
+}
+
+.jumbotron {
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-color: #E7E7E7;
+	border-width: 1px;
+	text-align: center;
+}
