@@ -17,7 +17,8 @@ class Expense < ActiveRecord::Base
   validates :amount, presence: true
 
   belongs_to :user
-  has_many :categories
+  belongs_to :category
+  belongs_to :sub_category
 
   nilify_blanks
 end

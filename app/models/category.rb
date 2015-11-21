@@ -9,6 +9,6 @@
 #
 
 class Category < ActiveRecord::Base
-  belongs_to :expense
+  belongs_to :expenses
   has_many :sub_categories
 end
