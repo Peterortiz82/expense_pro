@@ -2,7 +2,10 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @expenses = Expense.where(user_id: current_user.id).order(created_at: 'DESC')
+    @q = Expense.where(user_id: current_user.id).order(created_at: 'DESC').ransack(params[:q])
+    @expenses = @q.result(distinct: true).paginate(page: params[:page], per_page: 14)
+
+
   end
 
   def new

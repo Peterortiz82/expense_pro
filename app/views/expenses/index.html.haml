@@ -5,10 +5,10 @@
     .table-responsive
       %table.table.table-bordered
         %tr
-          %th Date
-          %th Category
-          %th Expense
-          %th Amount
+          %th= sort_link @q, :created_at, 'Date'
+          %th= sort_link @q, :category_id
+          %th  Expense
+          %th= sort_link @q, :amount
           %th Description
         - @expenses.each do |t|
           %tr
@@ -23,4 +23,5 @@
               %td= t.name
             %td= number_to_currency t.amount
             %td= t.description
+  = will_paginate @expenses
 = link_to 'Log Expense', new_expense_path, class: 'btn btn-primary pull-right'

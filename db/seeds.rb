@@ -66,7 +66,7 @@ personal_cat.each { |cat_name| SubCategory.create name: cat_name, category_id: p
 # shelter_cat.each { |cat_name| SubCategory.create name: cat_name, category_id: shelter.id }
 
 transportation = Category.find_by name: 'Transportation'
-transportation_cat = ['Fuel', 'Tires', 'Oil Changes', 'Maintenance', 'Parking Fees', 'Repairs', 'Other']
+transportation_cat = ['Fuel', 'Tires', 'Oil Changes', 'Maintenance', 'Parking Fees', 'Repairs', 'Sun Pass','Other']
 transportation_cat.each { |cat_name| SubCategory.create name: cat_name, category_id: transportation.id }
 
 
