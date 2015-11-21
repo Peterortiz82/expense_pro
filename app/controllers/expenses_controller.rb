@@ -2,17 +2,13 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @expenses = Expense.all
+    @expenses = Expense.where(user_id: current_user.id).order(created_at: 'DESC')
   end
 
   def new
     @expense = Expense.new
     @category = Category.new
     @categories = @expense.categories
-  end
-
-  def show
-
   end
 
   def create

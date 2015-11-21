@@ -1,4 +1,6 @@
 $(document).ready(function () {
+	$('label[for="expense_name"]').hide();
+	$('#expense_name').hide();
 	$('label[for="expense_sub_category_id"]').hide();
 	$('#expense_sub_category_id').hide();
 	var sub_categories = $('#expense_sub_category_id').html();
