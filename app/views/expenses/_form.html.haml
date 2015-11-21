@@ -13,11 +13,11 @@
         = form_for @expense do |f|
           = f.label :category_id, 'Select a category'
           %br
-          = f.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true
+          = f.collection_select :category_id, Category.order(:name), :id, :name, {}, {required: 'true', class: "form-control"}
           %br
           = f.label :sub_category_id, 'Expense'
           %br
-          = f.grouped_collection_select :sub_category_id, Category.order(:name), :sub_categories, :name, :id, :name, include_blank: true
+          = f.grouped_collection_select :sub_category_id, Category.order(:name), :sub_categories, :name, :id, :name, {}, {class: "form-control"}
           = f.label :name, 'Expense'
           %br
           = f.text_field :name, class: "form-control", placeholder: 'What did you buy?'

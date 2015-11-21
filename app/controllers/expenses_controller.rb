@@ -4,8 +4,6 @@ class ExpensesController < ApplicationController
   def index
     @q = Expense.where(user_id: current_user.id).order(created_at: 'DESC').ransack(params[:q])
     @expenses = @q.result(distinct: true).paginate(page: params[:page], per_page: 10)
-
-
   end
 
   def new
@@ -24,7 +22,18 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def destroy
+    correct_user
+    @expense = Expense.find params[:id]
+    @expense.destroy
+    redirect_to expenses_path
+  end
+
   private
+
+  def set_expense
+   @expense = Expense.find params[:id]
+  end
 
   def expense_params
     params.require(:expense).permit :name,
@@ -32,6 +41,11 @@ class ExpensesController < ApplicationController
                                     :description,
                                     :category_id,
                                     :sub_category_id
+  end
+
+  def correct_user
+    @expense = current_user.expenses.find (params[:id])
+    redirect_to expenses_path, notice: "Not authorized to delete this expense" if @expense.nil?
   end
 
 end
