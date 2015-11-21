@@ -3,7 +3,7 @@
 -else
   .panel.panel-default
     .table-responsive
-      %table.table.table-bordered.table-hover
+      %table.table.table-bordered
         %tr
           %th Date
           %th Category
@@ -14,7 +14,7 @@
           %tr
             %td= t.created_at.strftime("%B %d, %Y")
             -if t.category
-              %td= t.category.name ? t.category.name : t.name
+              %td= t.category.name
             -else
               %td= 'Other'
             -if t.sub_category
