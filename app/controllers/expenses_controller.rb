@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
 
   def index
     @q = Expense.where(user_id: current_user.id).order(created_at: 'DESC').ransack(params[:q])
-    @expenses = @q.result(distinct: true).paginate(page: params[:page], per_page: 14)
+    @expenses = @q.result(distinct: true).paginate(page: params[:page], per_page: 10)
 
 
   end
