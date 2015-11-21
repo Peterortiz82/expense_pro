@@ -23,10 +23,9 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
-    correct_user
     @expense = Expense.find params[:id]
     @expense.destroy
-    redirect_to expenses_path
+    redirect_to :back
   end
 
   private
@@ -42,10 +41,4 @@ class ExpensesController < ApplicationController
                                     :category_id,
                                     :sub_category_id
   end
-
-  def correct_user
-    @expense = current_user.expenses.find (params[:id])
-    redirect_to expenses_path, notice: "Not authorized to delete this expense" if @expense.nil?
-  end
-
 end
