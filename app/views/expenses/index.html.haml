@@ -1,6 +1,8 @@
 -if @expenses.empty?
   %h4 Opps! Looks like We could not find any results that matched your criteria or you have not logged any expenses.
   = link_to 'Back', :back
+  |
+  = link_to 'Log Expense', new_expense_path
 -else
   = render 'search'
   .panel.panel-default
@@ -28,4 +30,4 @@
             %td= t.description
             %td= link_to 'Delete', t, method: :delete
   = will_paginate @expenses
-= link_to 'Log Expense', new_expense_path, class: 'btn btn-primary pull-right'
+  = link_to 'Log Expense', new_expense_path, class: 'btn btn-primary pull-right'
