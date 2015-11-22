@@ -4,7 +4,7 @@ class ExpensesController < ApplicationController
 
   def index
     @search = Expense.where(user_id: current_user.id).order(created_at: 'DESC').search(params[:q])
-    @expenses = @search.result.paginate(page: params[:page], per_page: 10)
+    @expenses = @search.result.paginate(page: params[:page], per_page: 13)
   end
 
   def new

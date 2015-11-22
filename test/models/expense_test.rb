@@ -11,6 +11,7 @@
 #  updated_at      :datetime         not null
 #  sub_category_id :integer
 #  amount          :float
+#  expense_date    :datetime
 #
 
 require 'test_helper'

@@ -1,7 +1,14 @@
 = search_form_for @search do |f|
-  .row
-    .col-md-4.pull-right
-      .input-group
-        = f.search_field :created_at_date_equals, class: 'form-control', placeholder: 'Search by date'
-        %span.input-group-btn
-          = f.submit 'Search', class: 'btn btn-primary'
+  #search-bar
+    .container
+      .row
+        .panel.panel-default
+          .panel-body
+            .col-md-3
+              = f.search_field :created_at_date_equals, class: 'form-control', placeholder: 'Search by Date'
+            .col-md-3
+              = f.search_field :category_name_or_sub_category_name_cont, class: 'form-control', placeholder: 'Search by Category or Expense'
+            .col-md-3
+              = f.search_field :amount_gteq, class: 'form-control', placeholder: 'Search by (greater than) Amount'
+            .col-md-3
+              = f.submit 'Search', class: 'form-control btn-info'

@@ -4,6 +4,9 @@
   |
   = link_to 'Log Expense', new_expense_path
 -else
+  .col-md-1-pull-left
+  = button_tag 'Search', id: 'search-button', class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-search
   = render 'search'
   .panel.panel-default
     .table-responsive

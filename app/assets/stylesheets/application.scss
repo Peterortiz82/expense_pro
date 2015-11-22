@@ -17,6 +17,10 @@ h2 {
 	color: #2E6DA4;
 }
 
+h4 {
+	color: #525252;
+}
+
 th {
 	color: #2E6DA4;
 }
@@ -28,6 +32,39 @@ td {
 a:hover {
 	text-decoration: none;
 	color: #418CC6;
+}
+
+#search-button {
+	margin-bottom: 5px;
+}
+
+.col-md-3 {
+	padding-bottom: 2px;
+	padding-top: 2px;
+}
+
+.btn-info {
+	color: #fff;
+	background-color: #286090;
+	border-color: #204d74;
+}
+
+.btn-default {
+	color: #2E6DA4;
+	background-color: #F5F8FA;
+	border: none;
+	font-size: 1.5em;
+}
+
+.btn-default:hover {
+	color: #2E6DA4;
+	background-color: #F5F8FA;
+	border: none;
+}
+
+.btn-info:hover {
+	background-color: #337EBB;
+	border-color: #2E71AC;
 }
 
 .btn-primary {
@@ -87,8 +124,9 @@ a:hover {
 	margin-bottom: 5px;
 }
 
-.panel-default {
-	margin-top: 20px;
+.row {
+	margin-left: -15px;
+	margin-right: 15px;
 }
 
 .pagination {

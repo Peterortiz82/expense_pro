@@ -16,3 +16,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function () {
+	$('#search-bar').hide();
+	$('#search-button').click(function (event) {
+		event.preventDefault();
+		$('#search-bar').show();
+		$('#search-button').hide();
+	});
+	$('input:text').click(
+		function(){
+			$(this).val('');
+		});
+});
