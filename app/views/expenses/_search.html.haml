@@ -1,0 +1,7 @@
+= search_form_for @search do |f|
+  .row
+    .col-md-4.pull-right
+      .input-group
+        = f.search_field :created_at_date_equals, class: 'form-control', placeholder: 'Search by date'
+        %span.input-group-btn
+          = f.submit 'Search', class: 'btn btn-primary'

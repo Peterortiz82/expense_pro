@@ -21,4 +21,9 @@ class Expense < ActiveRecord::Base
   belongs_to :sub_category
 
   nilify_blanks
+
+  ransacker :created_at do
+    Arel.sql('date(expenses.created_at)')
+  end
+
 end

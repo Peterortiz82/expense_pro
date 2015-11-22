@@ -1,14 +1,16 @@
 -if @expenses.empty?
-  %h3 You have no expenses logged.
+  %h4 Opps! Looks like We could not find any results that matched your criteria or you have not logged any expenses.
+  = link_to 'Back', :back
 -else
+  = render 'search'
   .panel.panel-default
     .table-responsive
       %table.table.table-bordered
         %tr
-          %th= sort_link @q, :created_at, 'Date'
-          %th= sort_link @q, :category_id
+          %th= sort_link @search, :created_at, 'Date'
+          %th= sort_link @search, :category_id
           %th  Expense
-          %th= sort_link @q, :amount
+          %th= sort_link @search, :amount
           %th  Description
           %th  Remove
         - @expenses.each do |t|
