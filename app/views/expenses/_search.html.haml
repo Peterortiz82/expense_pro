@@ -5,10 +5,10 @@
         .panel.panel-default
           .panel-body
             .col-md-3
-              = f.search_field :created_at_date_equals, class: 'form-control', placeholder: 'Search by Date'
+              = f.text_field :created_at_date_equals, class: 'form-control', placeholder: 'Search by Date'
             .col-md-3
-              = f.search_field :category_name_or_sub_category_name_cont, class: 'form-control', placeholder: 'Search by Category or Expense'
+              = f.text_field :category_name_or_sub_category_name_or_name_cont, class: 'form-control', placeholder: 'Search by Category or Expense'
             .col-md-3
-              = f.search_field :amount_gteq, class: 'form-control', placeholder: 'Search by (greater than) Amount'
+              = f.text_field :amount_gteq, class: 'form-control', placeholder: 'Search by (greater than) Amount'
             .col-md-3
               = f.submit 'Search', class: 'form-control btn-info'

@@ -135,3 +135,11 @@ a:hover {
 	margin: 0;
 	border-radius: 4px;
 }
+
+@media (max-width: 767px) {
+
+	.row {
+		margin-right: -15px;
+	}
+
+}
