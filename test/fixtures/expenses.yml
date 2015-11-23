@@ -11,7 +11,7 @@
 #  updated_at      :datetime         not null
 #  sub_category_id :integer
 #  amount          :float
-#  expense_date    :datetime
+#  expense_date    :date
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

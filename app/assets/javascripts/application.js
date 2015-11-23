@@ -23,9 +23,12 @@ $(document).ready(function () {
 		event.preventDefault();
 		$('#search-bar').show();
 		$('#search-button').hide();
+		$('#q_expense_date_date_equals').val('')
+		$('#q_category_name_or_sub_category_name_or_name_cont').val('')
+		$('#q_amount_gteq').val('')
 	});
 	$('input:text').click(
-		function(){
+		function () {
 			$(this).val('');
 		});
 });

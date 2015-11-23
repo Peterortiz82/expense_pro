@@ -1,14 +1,15 @@
-= search_form_for @search do |f|
-  #search-bar
-    .container
-      .row
-        .panel.panel-default
-          .panel-body
-            .col-md-3
-              = f.text_field :created_at_date_equals, class: 'form-control', placeholder: 'Search by Date'
-            .col-md-3
-              = f.text_field :category_name_or_sub_category_name_or_name_cont, class: 'form-control', placeholder: 'Search by Category or Expense'
-            .col-md-3
-              = f.text_field :amount_gteq, class: 'form-control', placeholder: 'Search by (greater than) Amount'
-            .col-md-3
-              = f.submit 'Search', class: 'form-control btn-info'
+#search-form
+  = search_form_for @search do |f|
+    #search-bar
+      .container
+        .row
+          .panel.panel-default
+            .panel-body
+              .col-md-3
+                = f.search_field :expense_date_date_equals, class: 'form-control', placeholder: 'Date (mm/dd/yyyy)'
+              .col-md-3
+                = f.text_field :category_name_or_sub_category_name_or_name_cont, class: 'form-control', placeholder: 'Category or Expense'
+              .col-md-3
+                = f.text_field :amount_gteq, class: 'form-control', placeholder: 'Amount (greater than)'
+              .col-md-3
+                = f.submit 'Search', id: 'search-submit', class: 'form-control btn-info'

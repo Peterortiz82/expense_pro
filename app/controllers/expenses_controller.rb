@@ -4,7 +4,11 @@ class ExpensesController < ApplicationController
 
   def index
     @search = Expense.where(user_id: current_user.id).order(created_at: 'DESC').search(params[:q])
-    @expenses = @search.result.paginate(page: params[:page], per_page: 13)
+    @expenses = @search.result.paginate(page: params[:page], per_page: 15)
+    # respond_to do |format|
+    #   format.html
+    #   format.csv { render text: @expenses.to_csv }
+    # end
   end
 
   def new
@@ -16,10 +20,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new expense_params
     @expense.user_id = current_user.id
-    @date = params.require(:expense).permit(:created_at)[:created_at]
-    chronic_time = Chronic.parse(@date)
-    adjusted_time = chronic_time.present? ? chronic_time.in_time_zone : nil
-    @expense.created_at = adjusted_time
+    @expense.expense_date = DateTime.now.in_time_zone
     if @expense.save
       redirect_to expenses_path
     else

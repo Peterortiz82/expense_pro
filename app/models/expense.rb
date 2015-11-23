@@ -11,7 +11,7 @@
 #  updated_at      :datetime         not null
 #  sub_category_id :integer
 #  amount          :float
-#  expense_date    :datetime
+#  expense_date    :date
 #
 
 class Expense < ActiveRecord::Base
@@ -23,8 +23,17 @@ class Expense < ActiveRecord::Base
 
   nilify_blanks
 
-  ransacker :created_at do
-    Arel.sql('date(expenses.created_at)')
+  ransacker :expense_date do
+    Arel.sql('date(expense_date)')
   end
+
+  # def self.to_csv
+  #   CSV.generate do |csv|
+  #     csv << column_names
+  #     all.each do |expense|
+  #       csv << expense.attributes.values_at(*column_names)
+  #     end
+  #   end
+  # end
 
 end
