@@ -19,7 +19,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new expense_params
     @expense.user_id = current_user.id
-    @expense.expense_date = DateTime.now.to_date
+    @expense.expense_date = DateTime.now.in_time_zone.to_date
     if @expense.save
       redirect_to expenses_path
     else
