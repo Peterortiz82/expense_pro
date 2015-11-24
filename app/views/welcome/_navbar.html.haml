@@ -1,0 +1,12 @@
+.navbar.navbar-default.navbar-static-top
+  .container
+    = link_to 'Expense Tracker', expenses_path, class: "navbar-brand"
+    %ul.nav.pull-right
+      - if user_signed_in?
+        %li.dropdown.pull-right
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :style => "color:#777; margin-top: 5px;"}
+            %span.glyphicon.glyphicon-user
+            %b.caret
+          %ul.dropdown-menu
+            %li= link_to "#{current_user.email.split('@')[0]}", edit_user_registration_path
+            %li= link_to "Sign Out", destroy_user_session_path, method: :delete
