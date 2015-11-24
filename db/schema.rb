@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20151122205935) do
     t.datetime "updated_at",      null: false
     t.integer  "sub_category_id"
     t.float    "amount"
-    t.date     "expense_date"
+    t.datetime "expense_date"
   end
 
   create_table "sub_categories", force: :cascade do |t|

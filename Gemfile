@@ -19,6 +19,7 @@ gem 'devise', '~> 3.5', '>= 3.5.2'
 gem 'will_paginate', '~> 3.0', '>= 3.0.7'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'ransack', '~> 1.7'
+gem 'ransack_chronic', '~> 1.1'
 gem 'chronic', '~> 0.10.2'
 
 group :development, :test do

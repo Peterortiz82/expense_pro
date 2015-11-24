@@ -161,6 +161,8 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
+    ransack_chronic (1.1.0)
+      chronic (>= 0.6.7)
     rdoc (4.2.0)
       json (~> 1.4)
     responders (2.1.0)
@@ -227,6 +229,7 @@ DEPENDENCIES
   rails (= 4.2.3)
   rails_12factor
   ransack (~> 1.7)
+  ransack_chronic (~> 1.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

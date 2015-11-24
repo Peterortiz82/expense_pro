@@ -1,9 +1,8 @@
 class ExpensesController < ApplicationController
   before_action :authenticate_user!
-  before_action :chronic_time_zones
 
   def index
-    @search = Expense.where(user_id: current_user.id).order(created_at: 'DESC').search(params[:q])
+    @search = Expense.where(user_id: current_user.id).order(created_at: 'DESC').ransack(params[:q])
     @expenses = @search.result.paginate(page: params[:page], per_page: 15)
     # respond_to do |format|
     #   format.html
@@ -20,7 +19,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new expense_params
     @expense.user_id = current_user.id
-    @expense.expense_date = DateTime.now.in_time_zone
+    @expense.expense_date = DateTime.now.in_time_zone.to_date
     if @expense.save
       redirect_to expenses_path
     else
@@ -42,10 +41,6 @@ class ExpensesController < ApplicationController
                                     :description,
                                     :category_id,
                                     :sub_category_id
-  end
-
-  def chronic_time_zones
-    Chronic.time_class = Time.zone
   end
 
   def user_has_expenses_logged

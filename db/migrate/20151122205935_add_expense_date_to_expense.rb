@@ -1,6 +1,6 @@
 class AddExpenseDateToExpense < ActiveRecord::Migration
   def up
-    add_column :expenses, :expense_date, :date
+    add_column :expenses, :expense_date, :datetime
   end
 
   def down
