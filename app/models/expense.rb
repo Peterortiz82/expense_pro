@@ -27,13 +27,4 @@ class Expense < ActiveRecord::Base
     Arel.sql('DATE(expenses.expense_date)')
   end
 
-  # def self.to_csv
-  #   CSV.generate do |csv|
-  #     csv << column_names
-  #     all.each do |expense|
-  #       csv << expense.attributes.values_at(*column_names)
-  #     end
-  #   end
-  # end
-
 end
