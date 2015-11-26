@@ -1,6 +1,8 @@
 !!!
 %html
   %head
+    = favicon_link_tag "apple-touch-icon.ico"
+    %link{:href => "images/apple-touch-icon.png", :rel => "apple-touch-icon"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %title ExpensePro
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
