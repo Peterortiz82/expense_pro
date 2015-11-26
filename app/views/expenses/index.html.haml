@@ -13,7 +13,7 @@
       %table.table.table-bordered
         %tr
           %th= sort_link @search, :created_at, 'Date'
-          %th= sort_link @search, :user_email, 'Person'
+          %th= sort_link @search, :user_display_name, 'Person'
           %th= sort_link @search, :category_id
           %th  Expense
           %th= sort_link @search, :amount
@@ -22,7 +22,7 @@
         - @expenses.each do |t|
           %tr
             %td= t.expense_date.strftime("%B %d, %Y")
-            %td= t.user.email
+            %td= t.user.display_name
             -if t.category
               %td= t.category.name
             -else
