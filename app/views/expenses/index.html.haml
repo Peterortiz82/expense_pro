@@ -32,7 +32,7 @@
             -else
               %td= t.name
             %td= number_to_currency t.amount
-            %td= t.description
+            %td= auto_link t.description
             %td= link_to 'Delete', t, method: :delete
   = will_paginate @expenses
   = link_to 'Log Expense', new_expense_path, class: 'btn btn-primary pull-right'

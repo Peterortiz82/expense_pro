@@ -22,6 +22,7 @@ gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'ransack', '~> 1.7'
 gem 'ransack_chronic', '~> 1.1'
 gem 'chronic', '~> 0.10.2'
+gem 'rails_autolink', '~> 1.1', '>= 1.1.6'
 
 group :development, :test do
   gem 'awesome_print', '~> 1.6.1'
