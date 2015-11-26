@@ -1,6 +1,9 @@
 .navbar.navbar-default.navbar-static-top
   .container
-    = link_to 'Expense Tracker', expenses_path, class: "navbar-brand"
+    - if user_signed_in?
+      = link_to 'Expense Pro', expenses_path, class: "navbar-brand"
+    -else
+      = link_to 'Expense Tracker', root_path, class: "navbar-brand"
     %ul.nav.pull-right
       - if user_signed_in?
         %li.dropdown.pull-right
