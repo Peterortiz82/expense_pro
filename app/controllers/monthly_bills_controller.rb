@@ -23,7 +23,7 @@ class MonthlyBillsController < ApplicationController
   end
 
   def destroy
-    @monthly_bill = MonthlyBill.find parmas[:id]
+    @monthly_bill = MonthlyBill.find params[:id]
     @monthly_bill.destroy
     redirect_to :back
   end

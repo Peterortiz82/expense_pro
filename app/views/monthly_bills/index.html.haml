@@ -22,7 +22,7 @@
             %td= t.due_date.strftime("%dth")
             %td= t.name
             %td= number_to_currency t.amount
-            %td= link_to 'Delete', t, method: :delete
+            %td= link_to 'Delete', t, method: :delete, data: {confirm: "Are you sure?"}
   .panel.panel-default
     .table-responsive
       %table.table.table-bordered
