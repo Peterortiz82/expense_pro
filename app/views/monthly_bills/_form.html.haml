@@ -1,0 +1,31 @@
+- if @monthly_bill.errors.any?
+  .alert.alert-error
+    %button.close{"data-dismiss" => "alert", :type => "button"} &times;
+    %ul.errors
+      - @monthly_bill.errors.full_messages.each do |msg|
+        %li= msg
+#form
+  .container
+    .col-md-6.col-md-offset-3
+      .panel.panel-default
+        .panel-heading
+          %h2 Enter Monthly Bill
+        .panel-body
+          = form_for @monthly_bill do |f|
+            -#= f.label :person
+            -#%br
+            -#= f.text_field :person, class: "form-control"
+            = f.label :name, 'Bill'
+            %br
+            = f.text_field :name, class: "form-control"
+            %br
+            = f.label :amount
+            %br
+            = f.number_field :amount, class: "form-control", step: 'any'
+            %br
+            = f.label :due_date
+            %br
+            = f.text_field :due_date, placeholder: '(eg. 25th)',class: "form-control"
+            %br
+            = f.submit 'Submit', class: 'btn btn-primary pull-right'
+            = link_to 'Back', :back, class: 'pull-left'

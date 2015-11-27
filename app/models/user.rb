@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :invitable
 
   has_many :expenses
+  has_many :monthly_bills
 
   private
 

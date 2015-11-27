@@ -1,0 +1,36 @@
+-if @monthly_bills.empty?
+  %h4 Opps! Looks like We could not find any results that matched your criteria or you have not logged any Monthly bills.
+  = link_to 'Back', :back
+  |
+  = link_to 'Log Monthly Bill', new_monthly_bill_path
+-else
+  %h2= "Monthly Bills for #{current_user.display_name}"
+  -#.col-md-1-pull-right
+  -#= button_tag 'Search', id: 'search-button', class: 'btn btn-default' do
+  -#  %span.glyphicon.glyphicon-search
+  -#= render 'search'
+  .panel.panel-default
+    .table-responsive
+      %table.table.table-bordered
+        %tr
+          -#%th= sort_link @search, :person, 'Person'
+          %th  Due Date
+          %th= sort_link @search, :name, 'Bill'
+          %th= sort_link @search, :amount
+          %th  Remove
+        - @monthly_bills.each do |t|
+          %tr
+            -#%td= t.person
+            %td= t.due_date.strftime("%dth")
+            %td= t.name
+            %td= number_to_currency t.amount
+            %td= link_to 'Delete', t, method: :delete
+  .panel.panel-default
+    .table-responsive
+      %table.table.table-bordered
+        %tr
+          %th Monthly Total
+          %tr
+            %td= number_to_currency MonthlyBill.all.sum(:amount)
+  = will_paginate @monthly_bills
+  = link_to 'Add a new Monthly Bill', new_monthly_bill_path, class: 'btn btn-primary pull-right'
