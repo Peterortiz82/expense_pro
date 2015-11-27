@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def invitaion_permitted_parameters
     devise_parameter_sanitizer.for(:accept_invitation) do |u|
-      u.permit :first_name, :last_name, :invitation_token
+      u.permit :first_name, :last_name, :email, :invitation_token, :password, :password_confirmation
     end
   end
 
