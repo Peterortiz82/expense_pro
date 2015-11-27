@@ -1,10 +1,8 @@
 -if @monthly_bills.empty?
-  %h4 Opps! Looks like We could not find any results that matched your criteria or you have not logged any Monthly bills.
-  = link_to 'Back', :back
-  |
+  %h4 Looks like you have not logged any Monthly bills.
   = link_to 'Log Monthly Bill', new_monthly_bill_path
 -else
-  %h2= "Monthly Bills for #{current_user.display_name}"
+  %h2 Monthly Bills
   -#.col-md-1-pull-right
   -#= button_tag 'Search', id: 'search-button', class: 'btn btn-default' do
   -#  %span.glyphicon.glyphicon-search
