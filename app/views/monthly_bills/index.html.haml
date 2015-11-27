@@ -31,4 +31,4 @@
           %tr
             %td= number_to_currency MonthlyBill.all.sum(:amount)
   = will_paginate @monthly_bills
-  = link_to 'Add a new Monthly Bill', new_monthly_bill_path, class: 'btn btn-primary pull-right'
+  = link_to 'Add a Bill', new_monthly_bill_path, class: 'btn btn-primary pull-right'
