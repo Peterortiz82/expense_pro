@@ -1,5 +1,4 @@
 # Expense Pro
 
-A simple solution for tracking your expenses. You can track your own expenses or invite someone else so that you guys can each add expenses and track them together. This app is currently live, but still in it's infant stage. Please notify me of any bugs you may find. 
-
+A simple solution for tracking expenses. You can track your own expenses or invite someone else so that each person can add expenses and track them together.
 Visit [www.expense-pro.com](www.expense-pro.com) to try it out!
