@@ -1,6 +1,6 @@
 -if @monthly_bills.empty?
-  %h4 Looks like you have not logged any Monthly bills.
-  = link_to 'Log Monthly Bill', new_monthly_bill_path
+  %h4 No bills to display.
+  = link_to 'Add a Bill', new_monthly_bill_path
 -else
   %h2 Monthly Bills
   -#.col-md-1-pull-right
