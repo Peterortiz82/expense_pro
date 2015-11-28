@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   before_filter :invitaion_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
 
+  def mobile_device?
+    request.user_agent =~ /Mobile|webOS/
+  end
+  helper_method :mobile_device?
+
   protected
 
   def invitaion_permitted_parameters

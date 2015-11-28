@@ -34,6 +34,10 @@ a:hover {
 	color: #418CC6;
 }
 
+ul.dropdown-menu a {
+	color: #2E6DA4;
+}
+
 .close {
 	float: right;
 	font-size: 21px;
@@ -56,7 +60,7 @@ span.glyphicon.glyphicon-user {
 	color: #2E6DA4;
 }
 
-span.glyphicon.glyphicon-trash {
+.caret {
 	color: #2E6DA4;
 }
 
@@ -106,6 +110,28 @@ span.glyphicon.glyphicon-trash {
 	background-color: #F5F8FA;
 	border: none;
 	font-size: 1.5em;
+}
+
+.btn-danger {
+	margin-top: 10px;
+	background-color: white;
+	color: #2E6DA4;
+	border: none;
+	font-size: 1em;
+}
+
+.btn-danger:hover {
+	color: #418CC6;
+	text-decoration: none;
+	background-color: white;
+}
+
+button.btn.btn-danger.btn-sm.dropdown-toggle {
+	color: #418CC6;
+	text-decoration: none;
+	background-color: white;
+	border: none;
+	box-shadow: none;
 }
 
 .btn-default:hover {
