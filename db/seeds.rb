@@ -54,7 +54,7 @@ insurance_cat = ['Health Insurance', "Homeowner's Insurance", "Renter's Insuranc
 insurance_cat.each { |cat_name| SubCategory.create name: cat_name, category_id: insurance.id }
 
 kids = Category.find_by name: 'Kids'
-kids_cat = ['Clothes', 'Shoes', 'Toys', 'Activities']
+kids_cat = ['Clothes', 'Shoes', 'Toys', 'Activities', 'Other']
 kids_cat.each { |cat_name| SubCategory.create name: cat_name, category_id: kids.id }
 
 medical = Category.find_by name: 'Medical'
