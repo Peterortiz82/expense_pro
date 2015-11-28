@@ -9,6 +9,8 @@
 #
 
 class Category < ActiveRecord::Base
+  default_scope { order('name ASC') }
+
   belongs_to :expenses
   has_many :sub_categories
 end
