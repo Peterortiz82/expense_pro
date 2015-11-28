@@ -23,12 +23,8 @@
             %td= t.name
             %td= number_to_currency t.amount
             %td= link_to 'Delete', t, method: :delete, data: {confirm: "Are you sure?"}
-  .panel.panel-default
-    .table-responsive
-      %table.table.table-bordered
-        %tr
-          %th Monthly Total
-          %tr
-            %td= number_to_currency MonthlyBill.all.sum(:amount)
+  .well.well-sm
+    .total
+      = "Total: #{number_to_currency MonthlyBill.all.sum(:amount)}"
   = will_paginate @monthly_bills
   = link_to 'Add a Bill', new_monthly_bill_path, class: 'btn btn-primary pull-right'

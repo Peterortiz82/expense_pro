@@ -26,6 +26,7 @@ $(document).ready(function () {
 		$('#q_expense_date_date_equals').val('')
 		$('#q_category_name_or_sub_category_name_or_name_cont').val('')
 		$('#q_amount_gteq').val('')
+		$('#q_user_display_name_cont').val('')
 	});
 	$('input:text').click(
 		function () {
