@@ -4,7 +4,7 @@ SubCategory.destroy_all
 
 # Category names
 category = ['Clothing', 'Credit Card/Loan Payments','Education', 'Fitness', 'Food', 'Fun Money', 'Gifts', 'Giving',
-            'Household Items/Supplies', 'Insurance','Medical','Personal', 'Transportation', 'Other']
+            'Household Items/Supplies', 'Insurance', 'Kids','Medical','Personal', 'Transportation', 'Other']
 
 # Add Category names to the db
 category.each do |cat_name|
@@ -19,7 +19,6 @@ clothing_cat.each { |cat_name| SubCategory.create name: cat_name, category_id: c
 credit = Category.find_by name: 'Credit Card/Loan Payments'
 credit_cat = ['Visa', 'Master', 'Discover', 'Amex', 'Partners', 'Chase','Other']
 credit_cat.each { |cat_name| SubCategory.create name: cat_name, category_id: credit.id }
-
 
 education = Category.find_by name: 'Education'
 education_cat = ['Books', 'Online Courses', 'School Supplies', 'Other']
@@ -53,6 +52,10 @@ insurance = Category.find_by name: 'Insurance'
 insurance_cat = ['Health Insurance', "Homeowner's Insurance", "Renter's Insurance", 'Auto Insurance',
                  'Identity Theft Protection', 'Other']
 insurance_cat.each { |cat_name| SubCategory.create name: cat_name, category_id: insurance.id }
+
+kids = Category.find_by name: 'Kids'
+kids_cat = ['Clothes', 'Shoes', 'Toys', 'Activities']
+kids_cat.each { |cat_name| SubCategory.create name: cat_name, category_id: kids.id }
 
 medical = Category.find_by name: 'Medical'
 medical_cat = ['Primary Care', 'Dental Care', 'Medications', 'Medical Devices', 'Other']
