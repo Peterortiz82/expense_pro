@@ -12,7 +12,7 @@
     .table-responsive
       %table.table.table-bordered
         %tr
-          %th= sort_link @search, :created_at, 'Date'
+          %th= sort_link @search, :expense_date, 'Date'
           %th= sort_link @search, :user_display_name, 'Person'
           %th= sort_link @search, :category_id
           %th  Expense

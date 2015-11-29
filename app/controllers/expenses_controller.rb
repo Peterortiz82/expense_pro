@@ -4,7 +4,7 @@ class ExpensesController < ApplicationController
   def index
     @authorized_expense_user = Expense.joins(:user).where(["expenses.user_id = ? OR expenses.user_id = ? OR users.invited_by_id = ?",
                                             current_user.id, current_user.invited_by_id, current_user.id])
-    @search = @authorized_expense_user.order(created_at: 'DESC').ransack(params[:q])
+    @search = @authorized_expense_user.order(expense_date: 'DESC').ransack(params[:q])
     @expenses = @search.result.includes(:user).paginate(page: params[:page], per_page: 15)
   end
 
@@ -28,6 +28,24 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def past_dated
+    @expense = Expense.new
+  end
+
+  def do_past_dated
+    @expense = Expense.new expense_params
+    @expense.user_id = current_user.id
+    # @sale_date = params.require(:expense).permit(:expense_date)
+    # chronic_time = Chronic.parse(@sale_date)
+    # adjusted_time = chronic_time.present? ? chronic_time.in_time_zone : nil
+    # @expense.expense_date = adjusted_time
+    if @expense.save
+      redirect_to expenses_path
+    else
+      render :past_dated
+    end
+  end
+
   def destroy
     @expense = Expense.find params[:id]
     @expense.destroy
@@ -39,17 +57,10 @@ class ExpensesController < ApplicationController
   def expense_params
     params.require(:expense).permit :name,
                                     :amount,
+                                    :expense_date,
                                     :description,
                                     :category_id,
                                     :sub_category_id
-  end
-
-  def user_has_expenses_logged
-    !@expense.nil?
-  end
-
-  def authorized_user
-    Expense.where(user_id: current_user.invtited_by_id)
   end
 
 end

@@ -11,7 +11,7 @@
         .panel-heading
           %h2 Enter Expense
         .panel-body
-          = form_for @expense do |f|
+          = form_for @expense, :url => {:action => "do_past_dated"}, method: :post do |f|
             = f.label :category_id, 'Select a category'
             %br
             = f.collection_select :category_id, Category.order(:name), :id, :name, {}, {required: 'true', class: "form-control"}
@@ -21,6 +21,9 @@
             = f.label :name, 'Expense'
             %br
             = f.text_field :name, class: "form-control", placeholder: 'What did you buy?'
+            = f.label :expense_date, 'Date'
+            %br
+            = f.date_field :expense_date, class: "form-control"
             = f.label :amount
             %br
             = f.number_field :amount, class: "form-control", step: 'any'
@@ -29,4 +32,4 @@
             = f.text_area :description, class: "form-control"
             %br
             = f.submit 'Submit', class: 'btn btn-primary pull-right'
-          = link_to "Expense not for today's date? Click here", past_dated_expenses_path
+          = link_to "Back", :back
