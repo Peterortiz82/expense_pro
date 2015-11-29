@@ -16,6 +16,7 @@
 
 class Expense < ActiveRecord::Base
   validates :amount, presence: true
+  validates :description, length: { maximum: 55 }
 
   belongs_to :user
   belongs_to :category
