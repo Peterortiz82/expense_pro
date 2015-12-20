@@ -23,6 +23,7 @@ gem 'ransack', '~> 1.7'
 gem 'ransack_chronic', '~> 1.1'
 gem 'chronic', '~> 0.10.2'
 gem 'rails_autolink', '~> 1.1', '>= 1.1.6'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 group :development, :test do
   gem 'awesome_print', '~> 1.6.1'
