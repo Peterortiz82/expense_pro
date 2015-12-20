@@ -3,8 +3,8 @@ class MonthlyBillsController < ApplicationController
 
   def index
     authorized_user = MonthlyBill.joins(:user).where(
-        ["monthly_bills.user_id = ? OR monthly_bills.user_id = ? OR users.invited_by_id = ?",
-         current_user.id, current_user.invited_by_id, current_user.id])
+          ["monthly_bills.user_id = ? OR monthly_bills.user_id = ? OR users.invited_by_id = ?",
+          current_user.id, current_user.invited_by_id, current_user.id])
     @search = authorized_user.order(due_date: "ASC").ransack(params[:q])
     @monthly_bills = @search.result.includes(:user).paginate(page: params[:page], per_page: 15)
   end
