@@ -2,10 +2,11 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    authorized_expense_user = Expense.joins(:user).where(["expenses.user_id = ? OR expenses.user_id = ? OR users.invited_by_id = ?",
-                                            current_user.id, current_user.invited_by_id, current_user.id])
+    authorized_expense_user = Expense.joins(:user).where(
+        ["expenses.user_id = ? OR expenses.user_id = ? OR users.invited_by_id = ?",
+         current_user.id, current_user.invited_by_id, current_user.id])
     @search = authorized_expense_user.ransack(params[:q])
-    @expenses = @search.result.order(expense_date: 'DESC').includes(:user).paginate(page: params[:page], per_page: 15)
+    @expenses = @search.result.order(expense_date: "DESC").includes(:user).paginate(page: params[:page], per_page: 15)
   end
 
   def new
