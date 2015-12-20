@@ -24,7 +24,7 @@ class Expense < ActiveRecord::Base
 
   nilify_blanks
 
-  ransacker :expense_date, type: :datetime do
+  ransacker :expense_date, type: :date do
     Arel.sql('DATE(expenses.expense_date)')
   end
 
