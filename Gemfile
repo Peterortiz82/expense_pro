@@ -33,6 +33,15 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'database_cleaner', '~> 1.5.0'
+  gem 'capybara', '~> 2.5.0'
+  gem 'capybara-webkit', '~> 1.7.1'
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'launchy', '~> 2.4.3'
+  gem 'shoulda-matchers', '~> 3.0.0'
+end
+
 group :production do
   gem 'rails_12factor'
 end
