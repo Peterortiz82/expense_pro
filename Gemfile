@@ -30,6 +30,7 @@ group :development do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'pry', '~> 0.10.2'
+  gem 'guard-rspec', '~> 4.6.4'
   gem 'parallel_tests', '~> 1.9.0'
 end
 
