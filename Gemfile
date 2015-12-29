@@ -25,12 +25,12 @@ gem 'chronic', '~> 0.10.2'
 gem 'rails_autolink', '~> 1.1', '>= 1.1.6'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
-group :development, :test do
+group :development do
   gem 'awesome_print', '~> 1.6.1'
+  gem 'better_errors', '~> 2.1.1'
+  gem 'binding_of_caller', '~> 0.7.2'
   gem 'pry', '~> 0.10.2'
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
+  gem 'parallel_tests', '~> 1.9.0'
 end
 
 group :test do
@@ -40,6 +40,14 @@ group :test do
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'launchy', '~> 2.4.3'
   gem 'shoulda-matchers', '~> 3.0.0'
+end
+
+group :development, :test do
+  gem 'faker', '~> 1.5.0'
+  gem 'rspec-rails', '~> 3.3.3'
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
 end
 
 group :production do
