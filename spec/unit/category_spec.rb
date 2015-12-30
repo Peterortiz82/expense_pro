@@ -8,9 +8,10 @@
 #  updated_at :datetime         not null
 #
 
-class Category < ActiveRecord::Base
-  default_scope { order('name ASC') }
+require 'rails_helper'
 
-  has_many :sub_categories
+describe Category do
+
+  it { should have_many :sub_categories }
 
 end

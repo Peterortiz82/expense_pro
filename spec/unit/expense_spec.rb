@@ -14,18 +14,18 @@
 #  expense_date    :date
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-one:
-  name: MyString
-  amount: MyString
-  description: MyText
-  category_id: 1
-  user_id: 1
+describe Expense do
 
-two:
-  name: MyString
-  amount: MyString
-  description: MyText
-  category_id: 1
-  user_id: 1
+  it { should belong_to :user }
+
+  it { should belong_to :category }
+
+  it { should belong_to :sub_category }
+
+  it { should validate_presence_of :amount }
+
+  it { should validate_length_of(:description).is_at_most(55).on(:create) }
+
+end
