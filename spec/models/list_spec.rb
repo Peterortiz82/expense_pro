@@ -1,21 +1,16 @@
 # == Schema Information
 #
-# Table name: monthly_bills
+# Table name: lists
 #
 #  id         :integer          not null, primary key
-#  name       :string
-#  person     :string
-#  amount     :float
-#  due_date   :datetime
 #  user_id    :integer
+#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'rails_helper'
 
-describe MonthlyBill do
-
-  it { should belong_to :user }
-
+RSpec.describe List, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

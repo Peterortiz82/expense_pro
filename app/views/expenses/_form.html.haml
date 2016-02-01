@@ -11,7 +11,7 @@
         .panel-heading
           %h2 Enter Expense
         .panel-body
-          = form_for @expense do |f|
+          = form_for [@list, @expense] do |f|
             = f.label :category_id, 'Select a category'
             %br
             = f.collection_select :category_id, Category.order(:name), :id, :name, {}, {required: 'true', class: "form-control"}
@@ -29,4 +29,4 @@
             = f.text_area :description, class: "form-control"
             %br
             = f.submit 'Submit', class: 'btn btn-primary pull-right'
-          = link_to "Expense not for today's date? Click here", past_dated_expenses_path
+          = link_to "Expense not for today's date? Click here", past_dated_list_expenses_path

@@ -12,6 +12,7 @@
 #  sub_category_id :integer
 #  amount          :float
 #  expense_date    :date
+#  list_id         :integer
 #
 
 class Expense < ActiveRecord::Base
@@ -19,6 +20,7 @@ class Expense < ActiveRecord::Base
   validates :description, length: { maximum: 55 }
 
   belongs_to :user
+  belongs_to :list
   belongs_to :category
   belongs_to :sub_category
 

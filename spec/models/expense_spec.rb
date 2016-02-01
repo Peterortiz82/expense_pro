@@ -12,6 +12,7 @@
 #  sub_category_id :integer
 #  amount          :float
 #  expense_date    :date
+#  list_id         :integer
 #
 
 require 'rails_helper'

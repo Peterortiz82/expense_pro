@@ -1,8 +1,8 @@
--if @expenses.empty?
+-if @list.expenses.empty?
   %h4 Opps! Looks like We could not find any results that matched your criteria or you have not logged any expenses.
   = link_to 'Back', :back
   |
-  = link_to 'Log Expense', new_list_expense_path
+  = link_to 'Log Expense', new_list_expense_path(@list.id)
 -else
   .col-md-1-pull-right
   = button_tag 'Search', id: 'search-button', class: 'btn btn-default' do
@@ -19,7 +19,7 @@
           %th= sort_link @search, :amount
           %th  Description
           %th  Remove
-        - @expenses.each do |t|
+        - @list.expenses.each do |t|
           %tr
             %td= t.expense_date.strftime("%B %d, %Y")
             %td= t.user.display_name
@@ -33,9 +33,9 @@
               %td= t.name
             %td= number_to_currency t.amount
             %td= auto_link t.description
-            %td= link_to 'Delete', t, method: :delete, data: {confirm: "Are you sure?"}
+            %td= link_to 'Delete', "#", method: :delete, data: {confirm: "Are you sure?"}
   .well.well-sm
     .total
       = "Total: #{number_to_currency @expenses.sum(:amount)}"
-  = will_paginate @expenses
-  = link_to 'Log Expense', new_list_expense_path, class: 'btn btn-primary pull-right'
+  -#= will_paginate @list.expenses
+  -#= link_to 'Log Expense', new_list_expense_path, class: 'btn btn-primary pull-right'

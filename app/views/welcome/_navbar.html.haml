@@ -1,7 +1,7 @@
 .navbar.navbar-default.navbar-static-top
   .container
     - if user_signed_in?
-      = link_to 'Expense Pro', expenses_path, class: "navbar-brand"
+      = link_to 'Expense Pro', lists_path, class: "navbar-brand"
     -else
       = link_to 'Expense Pro', root_path, class: "navbar-brand"
     %ul.nav.pull-right
@@ -18,9 +18,9 @@
             .dropdown-header Monthly Bills
             %li= link_to "Add a Bill", new_monthly_bill_path
             %li= link_to "View Monthly Bills", monthly_bills_path
-            .dropdown-header Expenses
-            %li= link_to "Add an Expense", new_expense_path
-            %li= link_to "View Expenses", expenses_path
+            .dropdown-header Expense Lists
+            %li= link_to "Add a New List", new_list_path
+            %li= link_to "View Lists", lists_path
       - elsif user_signed_in?
         .btn-group
           %button.btn.btn-danger.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
@@ -31,10 +31,10 @@
             %li= link_to "Sign Out", destroy_user_session_path, method: :delete
         .btn-group
           %button.btn.btn-danger.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-            Expenses
+            Expense Lists
           %ul.dropdown-menu
-            %li= link_to "Add an Expense", new_expense_path
-            %li= link_to "View Expenses", expenses_path
+            %li= link_to "Add a New List", new_list_path
+            %li= link_to "View Lists", lists_path
         .btn-group
           %button.btn.btn-danger.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
             Monthly Bills

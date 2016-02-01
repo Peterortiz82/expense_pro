@@ -1,4 +1,5 @@
 class ExpensesController < ApplicationController
+  before_action :set_list
   before_action :authenticate_user!
 
   def index
@@ -23,8 +24,9 @@ class ExpensesController < ApplicationController
     @expense = Expense.new expense_params
     @expense.user_id = current_user.id
     @expense.expense_date = Time.current
+    @expense.list_id = @list.id
     if @expense.save
-      redirect_to expenses_path
+      redirect_to list_path @list
     else
       render :new
     end
@@ -38,7 +40,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.new expense_params
     @expense.user_id = current_user.id
     if @expense.save
-      redirect_to expenses_path
+      redirect_to list_path @list
     else
       render :past_dated
     end
@@ -52,6 +54,10 @@ class ExpensesController < ApplicationController
 
   private
 
+  def set_list
+    @list = List.find params[:list_id]
+  end
+
   def expense_params
     params.require(:expense).permit :name,
                                     :amount,
@@ -59,6 +65,7 @@ class ExpensesController < ApplicationController
                                     :description,
                                     :category_id,
                                     :sub_category_id
+
   end
 
 end
