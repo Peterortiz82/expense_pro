@@ -11,7 +11,7 @@ class ListsController < ApplicationController
         ]
     )
     @search = authorized_user.order(due_date: "ASC").ransack(params[:q])
-    @monthly_bills = @search.result.includes(:user).paginate(page: params[:page], per_page: 15)
+    @list = @search.result.includes(:user).paginate(page: params[:page], per_page: 15)
     @lists = List.all.order(created_at: :desc)
   end
 
@@ -22,6 +22,9 @@ class ListsController < ApplicationController
   def create
     @list = List.new list_params
     @list.user_id = current_user.id
+    raise
+    # puts "SENDGRID_USERNAME: #{ENV['SENDGRID_USERNAME']}"
+    # puts "SENDGRID_PASSWORD: #{ENV['SENDGRID_PASSWORD']}"
     if @list.save
       redirect_to lists_path
     else
