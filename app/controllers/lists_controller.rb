@@ -2,6 +2,16 @@ class ListsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    authorized_user = List.joins(:user).where(
+        [
+            "lists.user_id = ? OR lists.user_id = ? OR users.invited_by_id = ?",
+            current_user.id,
+            current_user.invited_by_id,
+            current_user.id
+        ]
+    )
+    @search = authorized_user.order(due_date: "ASC").ransack(params[:q])
+    @monthly_bills = @search.result.includes(:user).paginate(page: params[:page], per_page: 15)
     @lists = List.all.order(created_at: :desc)
   end
 
