@@ -16,6 +16,7 @@
 #
 
 class Expense < ActiveRecord::Base
+  after_create :add_expense_name
   validates :amount, presence: true
   validates :description, length: { maximum: 55 }
 
@@ -26,8 +27,23 @@ class Expense < ActiveRecord::Base
 
   nilify_blanks
 
+  default_scope { order('expense_date DESC') }
+
   ransacker :expense_date, type: :date do
     Arel.sql('DATE(expenses.expense_date)')
+  end
+  
+private
+
+  def add_expense_name
+    update_attributes(name: expense_name)
+  end
+
+  def expense_name
+    category = Category.find_by(id: category_id)
+    sub_category = SubCategory.find_by(id: sub_category_id)
+
+    "#{category.name} - #{sub_category.name}"
   end
 
 end

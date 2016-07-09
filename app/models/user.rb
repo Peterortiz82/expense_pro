@@ -29,7 +29,7 @@
 #
 
 class User < ActiveRecord::Base
-  before_validation :generate_display_name
+  after_create :generate_display_name
   validates :first_name, presence: true
   validates :last_name, presence: true
 
@@ -38,14 +38,16 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :invitable
 
-  has_many :expenses
+  has_many :lists
   has_many :monthly_bills
+  has_many :expenses
 
   private
 
   def generate_display_name
     return unless first_name and last_name
-    self.display_name = self.first_name + ' ' + self.last_name if self.display_name.blank?
+
+    update_attributes(display_name: "#{first_name} #{last_name}".titleize)
   end
   
 end

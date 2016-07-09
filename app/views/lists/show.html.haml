@@ -19,21 +19,21 @@
           %th= sort_link @search, :amount
           %th  Description
           %th  Remove
-        - @list.expenses.each do |t|
+        - @list.expenses.each do |expense|
           %tr
-            %td= t.expense_date.strftime("%B %d, %Y")
-            %td= t.user.display_name
-            -if t.category
-              %td= t.category.name
+            %td= expense.expense_date.strftime("%B %d, %Y")
+            %td= expense.user.display_name
+            -if expense.category
+              %td= expense.category.name
             -else
               %td= 'Other'
-            -if t.sub_category
-              %td= t.sub_category.name
+            -if expense.sub_category
+              %td= expense.sub_category.name
             -else
-              %td= t.name
-            %td= number_to_currency t.amount
-            %td= auto_link t.description
-            %td= link_to 'Delete', "#", method: :delete, data: {confirm: "Are you sure?"}
+              %td= expense.name
+            %td= number_to_currency expense.amount
+            %td= auto_link expense.description
+            %td= link_to 'Delete', list_expense_path(@list, expense), method: :delete, data: {confirm: "Are you sure?"}
   .well.well-sm
     .total
       = "Total: #{number_to_currency @expenses.sum(:amount)}"
