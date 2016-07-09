@@ -36,7 +36,7 @@ class Expense < ActiveRecord::Base
 private
 
   def add_expense_name
-    update_attributes(name: expense_name)
+    update_attributes(name: expense_name) if name.blank?
   end
 
   def expense_name
