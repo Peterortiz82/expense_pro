@@ -17,7 +17,6 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new expense_params
     @expense.user_id = current_user.id
-    binding.pry
     @expense.expense_date = Time.current
     @expense.list_id = @list.id
     if @expense.save
