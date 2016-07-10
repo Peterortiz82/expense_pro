@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @lists = authorized_list_user.paginate(page: params[:page], per_page: 15)
+    @lists = authorized_list_user.paginate(page: params[:page], per_page: 8)
   end
 
   def new
@@ -21,7 +21,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find params[:id]
-    @expenses = Expense.where list_id: @list.id
+    @expenses = @list.expenses
     @search = @expenses.ransack(params[:q])
     @expense = @search.result.includes(:user).paginate(page: params[:page], per_page: 15)
   end

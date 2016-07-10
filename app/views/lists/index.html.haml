@@ -13,4 +13,5 @@
         -#.pull-right
         -#  created on:
         -#  = list.created_at.to_date.strftime("%B %d, %Y")
+  = will_paginate @lists
   = link_to 'Create a List', new_list_path, class: 'btn btn-primary pull-right'
