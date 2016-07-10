@@ -2,6 +2,13 @@ class ExpensesController < ApplicationController
   before_action :set_list
   before_action :authenticate_user!
 
+  def index
+    @expenses = Expense.where list_id: @list.id
+    @search = @expenses.ransack(params[:q])
+    @expenses = @search.result.order(expense_date: "DESC").includes(:user).
+        paginate(page: params[:page], per_page: 15)
+  end
+
   def new
     @expense = Expense.new
   end

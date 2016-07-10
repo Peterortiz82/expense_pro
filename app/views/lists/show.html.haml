@@ -4,10 +4,11 @@
   |
   = link_to 'Log Expense', new_list_expense_path(@list.id)
 -else
-  .col-md-1-pull-right
-  = button_tag 'Search', id: 'search-button', class: 'btn btn-default' do
-    %span.glyphicon.glyphicon-search
-  = render 'search'
+  - if Feature.active?(:search)
+    .col-md-1-pull-right
+    = button_tag 'Search', id: 'search-button', class: 'btn btn-default' do
+      %span.glyphicon.glyphicon-search
+    = render 'search'
   .panel.panel-default
     .table-responsive
       %table.table.table-bordered
@@ -32,7 +33,7 @@
             -else
               %td= expense.name
             %td= number_to_currency expense.amount
-            %td= auto_link expense.description
+            %td= expense.description.present? ? (auto_link expense.description) : 'N/A'
             %td= link_to 'Delete', list_expense_path(@list, expense), method: :delete, data: {confirm: "Are you sure?"}
   .well.well-sm
     .total
