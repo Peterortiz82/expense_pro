@@ -1,12 +1,15 @@
--if @list.expenses.empty?
-  %h4 Opps! Looks like We could not find any results that matched your criteria or you have not logged any expenses.
+-if params[:q] && @expenses.empty?
+  %h4 Sorry, but we could not find any results that matched your criteria. Please try your search again.
+  = link_to 'Back', :back
+- elsif @expenses.empty?
+  %h4= "#{@list.title} does not have any expenses logged at this time."
   = link_to 'Back', :back
   |
-  = link_to 'Log Expense', new_list_expense_path(@list.id)
+  = link_to 'Log Expense', new_list_expense_path(@list)
 -else
   - if Feature.active?(:search)
     .col-md-1-pull-right
     = button_tag 'Search', id: 'search-button', class: 'btn btn-default' do
       %span.glyphicon.glyphicon-search
-    = render 'shared/expense_search'
-    = render 'shared/expenses'
+  = render 'shared/expense_search'
+  = render 'shared/expenses'
