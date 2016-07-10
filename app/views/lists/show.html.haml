@@ -8,37 +8,5 @@
     .col-md-1-pull-right
     = button_tag 'Search', id: 'search-button', class: 'btn btn-default' do
       %span.glyphicon.glyphicon-search
-    = render 'search'
-  .panel.panel-default
-    .table-responsive
-      %table.table.table-bordered
-        %tr
-          %th= sort_link @search, :expense_date, 'Date'
-          - if Feature.active?(:invite_user)
-            %th= sort_link @search, :user_display_name, 'Person'
-          %th= sort_link @search, :category_id
-          %th  Expense
-          %th= sort_link @search, :amount
-          %th  Description
-          %th  Remove
-        - @list.expenses.each do |expense|
-          %tr
-            %td= expense.expense_date.strftime("%B %d, %Y")
-            - if Feature.active?(:invite_user)
-              %td= expense.user.display_name
-            -if expense.category
-              %td= expense.category.name
-            -else
-              %td= 'Other'
-            -if expense.sub_category
-              %td= expense.sub_category.name
-            -else
-              %td= expense.name
-            %td= number_to_currency expense.amount
-            %td= expense.description.present? ? (auto_link expense.description) : 'N/A'
-            %td= link_to 'Delete', list_expense_path(@list, expense), method: :delete, data: {confirm: "Are you sure?"}
-  .well.well-sm
-    .total
-      = "Total: #{number_to_currency @expenses.sum(:amount)}"
-  -#= will_paginate @expenses
-  = link_to 'Log Expense', new_list_expense_path(@list), class: 'btn btn-primary pull-right'
+    = render 'shared/expense_search'
+    = render 'shared/expenses'

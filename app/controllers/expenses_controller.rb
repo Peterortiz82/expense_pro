@@ -3,10 +3,11 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @expenses = Expense.where list_id: @list.id
+    @expenses = @list.expenses
+    @sum_of_expenses = @expenses.sum(:amount)
     @search = @expenses.ransack(params[:q])
-    @expenses = @search.result.order(expense_date: "DESC").includes(:user).
-        paginate(page: params[:page], per_page: 15)
+    @sum_of_search_results = @search.result.sum(:amount)
+    @expenses = @search.result.order(expense_date: "DESC").includes(:user).paginate(page: params[:page], per_page: 15)
   end
 
   def new
