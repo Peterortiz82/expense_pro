@@ -28,7 +28,7 @@
           %td= link_to 'Delete', list_expense_path(@list, expense), method: :delete, data: {confirm: "Are you sure?"}
 .well.well-sm
   .total
-    - if params[:q].blank?
+    - if params[:q].blank? || params[:q].has_key?(:s)
       = "Total: #{number_to_currency @sum_of_expenses}"
     - else
       = "Total: #{number_to_currency @sum_of_search_results}"

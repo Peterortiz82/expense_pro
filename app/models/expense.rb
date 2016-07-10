@@ -11,7 +11,7 @@
 #  updated_at      :datetime         not null
 #  sub_category_id :integer
 #  amount          :float
-#  expense_date    :date
+#  expense_date    :datetime
 #  list_id         :integer
 #
 
