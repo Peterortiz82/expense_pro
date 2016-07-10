@@ -24,7 +24,6 @@ class ListsController < ApplicationController
     @expenses = Expense.where list_id: @list.id
     @search = @expenses.ransack(params[:q])
     @expense = @search.result.includes(:user).paginate(page: params[:page], per_page: 15)
-    @expense = @expense.all.order(created_at: :desc)
   end
 
   def edit
