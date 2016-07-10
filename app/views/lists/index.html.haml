@@ -9,7 +9,8 @@
       .list-group-item
         .list-group-item-heading
           %h4= link_to list.title, list_path(list)
-        .pull-right
-          created on:
-          = list.created_at.to_date.strftime("%B %d, %Y")
+        -# --- WIP ---
+        -#.pull-right
+        -#  created on:
+        -#  = list.created_at.to_date.strftime("%B %d, %Y")
   = link_to 'Create a List', new_list_path, class: 'btn btn-primary pull-right'
