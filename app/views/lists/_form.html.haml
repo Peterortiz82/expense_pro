@@ -1,19 +1,7 @@
-- if @list.errors.any?
-  .alert.alert-error
-    %button.close{"data-dismiss" => "alert", :type => "button"} &times;
-    %ul.errors
-      - @list.errors.full_messages.each do |msg|
-        %li= msg
-#form
-  .container
-    .col-md-6.col-md-offset-3
-      .panel.panel-default
-        .panel-heading
-          %h2 Create a New Expense List
-        .panel-body
-          = form_for @list do |f|
-            = f.label :title
-            %br
-            = f.text_field :title, class: "form-control"
-            %br
-            = f.submit 'Submit', class: 'btn btn-primary pull-right'
+.panel-body
+  = form_for @list do |f|
+    = f.label :title
+    %br
+    = f.text_field :title, class: "form-control"
+    %br
+    = f.submit 'Submit', class: 'btn btn-primary pull-right'

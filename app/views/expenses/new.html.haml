@@ -1,1 +1,13 @@
-= render 'form'
+- if @expense.errors.any?
+  .alert.alert-error
+    %button.close{"data-dismiss" => "alert", :type => "button"} &times;
+    %ul.errors
+      - @expense.errors.full_messages.each do |msg|
+        %li= msg
+#form
+  .container
+    .col-md-6.col-md-offset-3
+      .panel.panel-default
+        .panel-heading
+          %h2 Enter Expense
+        = render 'form'

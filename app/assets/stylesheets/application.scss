@@ -1,3 +1,7 @@
+/*
+*= require 'masonry/transitions'
+*/
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -240,6 +244,33 @@ button.btn.btn-danger.btn-sm.dropdown-toggle {
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
 	background-color: #FFF;
+}
+
+#lists {
+	margin: 0 auto;
+}
+
+#lists
+.panel.panel-default {
+	margin-bottom: 5px;
+}
+
+.box {
+	margin: 5px;
+	width: 247px;
+}
+
+.time {
+	font-size: 11px;
+	color: #BABABA
+}
+
+.actions {
+	font-size: 11px;
+}
+
+.center {
+	text-align: center;
 }
 
 @media (max-width: 767px) {

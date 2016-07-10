@@ -1,5 +1,6 @@
 class ExpensesController < ApplicationController
   before_action :set_list
+  before_action :set_expense, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -41,25 +42,35 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @expense.update(expense_params)
+      redirect_to list_path @list
+    else
+      render :edit
+    end
+  end
+
   def destroy
-    @expense = Expense.find params[:id]
     @expense.destroy
     redirect_to list_path @list
   end
 
 private
 
+  def set_expense
+    @expense = Expense.find params[:id]
+  end
+
   def set_list
     @list = List.find params[:list_id]
   end
 
   def expense_params
-    params.require(:expense).permit :name,
-                                    :amount,
-                                    :expense_date,
-                                    :description,
-                                    :category_id,
-                                    :sub_category_id
+    params.require(:expense).permit :name, :amount, :expense_date,
+                                    :description, :category_id, :sub_category_id
 
   end
 

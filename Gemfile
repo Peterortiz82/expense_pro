@@ -26,6 +26,7 @@ gem 'rails_autolink', '~> 1.1', '>= 1.1.6'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'rollout', '~> 2.3'
 gem 'redis', '~> 3.3'
+gem 'masonry-rails', '~> 0.2.4'
 
 group :development do
   gem 'awesome_print', '~> 1.6.1'
