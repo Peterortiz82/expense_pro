@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:edit, :show, :destroy, :update]
+  before_action :set_list, only: [ :edit, :show, :destroy, :update]
   before_action :authenticate_user!
 
   def index
