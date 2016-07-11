@@ -17,8 +17,10 @@
 
 class Expense < ActiveRecord::Base
   after_create :add_expense_name
+
   validates :amount, presence: true
   validates :description, length: { maximum: 55 }
+  validate :must_have_a_category
 
   belongs_to :user
   belongs_to :list
@@ -44,6 +46,12 @@ private
     sub_category = SubCategory.find_by(id: sub_category_id)
 
     "#{category.name} - #{sub_category.name}"
+  end
+
+  def must_have_a_category
+    if category_id.nil?
+      errors.add(:category_id, "You must select a category")
+    end
   end
 
 end

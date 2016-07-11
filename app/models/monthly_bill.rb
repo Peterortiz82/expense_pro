@@ -13,5 +13,10 @@
 #
 
 class MonthlyBill < ActiveRecord::Base
+
+  validates :name, presence: true
+  validates :due_date, presence: true
+  validates :amount, presence: true
+
   belongs_to :user
 end

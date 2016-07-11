@@ -6,11 +6,9 @@
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .form_group
           = f.label :email
-          %br/
           = f.email_field :email, autofocus: true, class: "form-control"
         .form_group
           = f.label :password
-          %br/
           = f.password_field :password, autocomplete: "off", class: "form-control"
         - if devise_mapping.rememberable?
           .form_group

@@ -1,19 +1,14 @@
 .panel-body
-  = form_for [@list, @expense] do |f|
+  = form_for [@list, @expense], validate: true do |f|
     = f.label :category_id, 'Select a category'
-    %br
     = f.collection_select :category_id, Category.order(:name), :id, :name, {}, {required: 'true', class: "form-control"}
     = f.label :sub_category_id, 'Expense'
-    %br
     = f.grouped_collection_select :sub_category_id, Category.order(:name), :sub_categories, :name, :id, :name, {}, {class: "form-control"}
     = f.label :name, 'Expense'
-    %br
     = f.text_field :name, class: "form-control", placeholder: 'What did you buy?'
     = f.label :amount
-    %br
     = f.number_field :amount, class: "form-control", step: 'any'
     = f.label :description
-    %br
     = f.text_area :description, class: "form-control"
     %br
     = f.submit 'Submit', class: 'btn btn-primary pull-right'
