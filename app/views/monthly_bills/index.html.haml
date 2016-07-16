@@ -15,16 +15,18 @@
           %th= sort_link @search, :due_date, 'Due Date'
           %th  Bill
           %th= sort_link @search, :amount
-          %th  Remove
-        - @monthly_bills.each do |t|
+          %th  Edit/Delete
+        - @monthly_bills.each do |bill|
           %tr
-            -#%td= t.person
-            %td= t.due_date.day.ordinalize
-            %td= t.name
-            %td= number_to_currency t.amount
-            %td= link_to 'Delete', t, method: :delete, data: {confirm: "Are you sure?"}
+            %td= bill.due_date.day.ordinalize
+            %td= bill.name
+            %td= number_to_currency bill.amount
+            %td
+              = link_to 'Edit', edit_monthly_bill_path(bill)
+              |
+              = link_to 'Delete', bill, method: :delete, data: {confirm: "Are you sure?"}
   .well.well-sm
     .total
-      = "Total: #{number_to_currency MonthlyBill.all.sum(:amount)}"
+      = "Total: #{number_to_currency @sum_of_bills}"
   = will_paginate @monthly_bills
   = link_to 'Add a Bill', new_monthly_bill_path, class: 'btn btn-primary pull-right'

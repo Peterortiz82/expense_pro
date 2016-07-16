@@ -2,6 +2,8 @@ class MonthlyBillsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @monthly_bills = current_user.monthly_bills
+    @sum_of_bills = @monthly_bills.sum(:amount)
     @search = current_user.monthly_bills.order(due_date: "ASC").ransack(params[:q])
     @monthly_bills = @search.result.includes(:user).paginate(page: params[:page], per_page: 15)
   end
