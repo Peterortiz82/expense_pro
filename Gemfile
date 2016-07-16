@@ -28,6 +28,7 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'rollout', '~> 2.3'
 gem 'redis', '~> 3.3'
 gem 'masonry-rails', '~> 0.2.4'
+gem 'pry-rails', '~> 0.3.4'
 
 group :development do
   gem 'awesome_print', '~> 1.6.1'
@@ -38,7 +39,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'pry-rails', '~> 0.3.4'
   gem 'meta_request'
   gem 'faker', '~> 1.5.0'
   gem 'rspec-rails', '~> 3.3.3'
