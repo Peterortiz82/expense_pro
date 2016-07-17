@@ -10,6 +10,7 @@
 #
 
 class List < ActiveRecord::Base
+  include ExpenseListAnalytics
 
   belongs_to :user
   has_many :expenses
@@ -17,9 +18,5 @@ class List < ActiveRecord::Base
   default_scope { order('created_at DESC') }
 
   validates :title, presence: true
-
-  def total_amount
-    expenses.sum(:amount)
-  end
 
 end
