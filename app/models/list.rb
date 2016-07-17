@@ -18,4 +18,8 @@ class List < ActiveRecord::Base
 
   validates :title, presence: true
 
+  def total_amount
+    expenses.sum(:amount)
+  end
+
 end

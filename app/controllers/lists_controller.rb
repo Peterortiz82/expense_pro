@@ -21,10 +21,9 @@ class ListsController < ApplicationController
   end
 
   def show
-    @expenses = @list.expenses
-    @sum_of_expenses = @expenses.sum(:amount)
-    @search = @expenses.ransack(params[:q])
-    @expenses = @search.result.order(expense_date: "DESC").includes(:user).paginate(page: params[:page], per_page: 15)
+    @list_expenses = @list.expenses
+    @search = @list_expenses.ransack(params[:q])
+    @expenses = @search.result.paginate(page: params[:page], per_page: 15)
   end
 
   def edit

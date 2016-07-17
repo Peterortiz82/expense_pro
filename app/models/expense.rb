@@ -34,7 +34,7 @@ class Expense < ActiveRecord::Base
   ransacker :expense_date, type: :date do
     Arel.sql('DATE(expenses.expense_date)')
   end
-  
+
 private
 
   def add_expense_name
