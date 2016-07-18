@@ -32,5 +32,8 @@
 .well.well-sm
   .total
     = show_proper_total
+    .pull-right
+      %span.glyphicon.glyphicon-stats
+      = link_to 'Analytics', analytics_list_path(@list)
 = will_paginate @expenses
 = link_to 'Log Expense', new_list_expense_path(@list), class: 'btn btn-primary pull-right'

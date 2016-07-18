@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [ :edit, :show, :destroy, :update]
+  before_action :set_list, only: [ :edit, :show, :destroy, :update, :analytics]
   before_action :authenticate_user!
 
   def index
@@ -24,6 +24,10 @@ class ListsController < ApplicationController
     @list_expenses = @list.expenses
     @search = @list_expenses.ransack(params[:q])
     @expenses = @search.result.paginate(page: params[:page], per_page: 15)
+  end
+
+  def analytics
+    @list_expenses = @list.expenses
   end
 
   def edit

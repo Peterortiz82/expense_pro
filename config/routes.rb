@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :lists do
+      get :analytics, on: :member
     resources :expenses do
       collection do
         get :past_dated

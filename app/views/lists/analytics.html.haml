@@ -1,0 +1,11 @@
+#analytics
+  .jumbotron
+    .container
+      .pie_chart
+        .h2 Categories
+        = category_pie_chart
+      .line_graph
+        .h2= "#{@list.title} Expenses"
+        = expense_line_chart
+
+  = link_to 'Back', :back

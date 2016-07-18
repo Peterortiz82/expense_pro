@@ -229,6 +229,16 @@ button.btn.btn-danger.btn-sm.dropdown-toggle {
 	text-align: center;
 }
 
+#analytics
+.jumbotron {
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-color: #E7E7E7;
+	border-width: 1px;
+	text-align: left;
+}
+
+
 .panel-heading h2 {
 	margin-top: 10px;
 	margin-bottom: 5px;
@@ -289,6 +299,10 @@ button.btn.btn-danger.btn-sm.dropdown-toggle {
 
 .center {
 	text-align: center;
+}
+
+.glyphicon-stats {
+	color: #2e6da4;
 }
 
 @media (max-width: 767px) {
