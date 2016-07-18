@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :lists do
       get :analytics, on: :member
+      get :pie_chart, on: :member
+      get :line_chart, on: :member
     resources :expenses do
       collection do
         get :past_dated

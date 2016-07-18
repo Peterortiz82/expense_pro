@@ -8,6 +8,17 @@ module ExpenseListAnalytics
     expenses.map(&:amount).max
   end
 
+  # Returns the category that has the highest expense total =>
+  # {:category=>"Household Items/Supplies", :category_count=>3, :amount=>204.0}
+  #
+  def most_spent_by_category
+    category_data.max_by { |key| key[:amount] }
+  end
+
+  def total_categories_count
+    category_data.sum { |category| category[:category_count] }
+  end
+
   def category_percentage_chart_data
     total_categories = total_categories_count
     total_categories = 1 if total_categories == 0
@@ -20,21 +31,27 @@ module ExpenseListAnalytics
     end
   end
 
+  # Create all days from the first day an expense was entered for better graphs.
+  # if there were no expenses for a particular day we add 0 to that days count.
+  #
   def expense_chart_data
-    expense_data_grouped_by_expense_date.map do |expense|
-        [
-          expense[0],
-          expense[1].count
-        ]
+    start_date = expense_data_grouped_by_expense_date.min[0]
+    end_date = Time.current.to_date
+    data = []
+
+    (start_date..end_date).each do |date|
+      matching_dates = expense_data_grouped_by_expense_date.detect { |expense| expense[0] == date }
+      if matching_dates.present?
+        data << [date, matching_dates[1].count]
+      else
+        data << [date, 0]
+      end
     end
+
+    data
   end
 
-  # Returns the category that has the highest expense total =>
-  # {:category=>"Household Items/Supplies", :category_count=>3, :amount=>204.0}
-  #
-  def most_spent_by_category
-    category_data.max_by { |key| key[:amount] }
-  end
+private
 
   # Returns an array of hashes of category data =>
   # [{:category=>"Credit Card/Loan Payments", :category_count=>4, :amount=>125.0},
@@ -44,15 +61,11 @@ module ExpenseListAnalytics
   def category_data
     expense_data_grouped_by_category.map do |category|
       {
-          category: category[0],
-          category_count: category[1].count,
-          amount: category[1].sum { |category_hash| category_hash[:amount] }
+        category: category[0],
+        category_count: category[1].count,
+        amount: category[1].sum { |category_hash| category_hash[:amount] }
       }
     end
-  end
-
-  def total_categories_count
-    category_data.sum { |category| category[:category_count] }
   end
 
   def expense_data_grouped_by_category
@@ -60,7 +73,7 @@ module ExpenseListAnalytics
   end
 
   def expense_data_grouped_by_expense_date
-    expense_data.group_by { |expense| expense[:expense_date] }
+    expense_data.group_by { |expense| expense[:expense_date].to_date }
   end
 
   # Returns an array of hashes of expense data =>
@@ -74,7 +87,7 @@ module ExpenseListAnalytics
     expenses.map do |expense|
       {
         category: expense.category.name,
-        expense_date: expense.expense_date,
+        expense_date: expense.expense_date.to_date,
         amount: expense.amount
       }
     end

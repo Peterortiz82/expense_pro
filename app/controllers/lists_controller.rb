@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [ :edit, :show, :destroy, :update, :analytics]
+  before_action :set_list, only: [ :edit, :show, :destroy, :update, :analytics, :line_chart, :pie_chart]
   before_action :authenticate_user!
 
   def index
@@ -27,7 +27,12 @@ class ListsController < ApplicationController
   end
 
   def analytics
-    @list_expenses = @list.expenses
+  end
+
+  def line_chart
+  end
+
+  def pie_chart
   end
 
   def edit

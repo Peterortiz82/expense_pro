@@ -5,7 +5,7 @@ module ListsHelper
   end
 
   def category_pie_chart
-    pie_chart @list.category_percentage_chart_data, discrete: true
+    pie_chart @list.category_percentage_chart_data
   end
 
   def show_proper_total
