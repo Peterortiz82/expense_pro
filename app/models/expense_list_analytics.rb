@@ -34,8 +34,8 @@ module ExpenseListAnalytics
   # Create all days from the first day an expense was entered for better graphs.
   # if there were no expenses for a particular day we add 0 to that days count.
   #
-  def expense_chart_data
-    start_date = expense_data_grouped_by_expense_date.min[0]
+  def expense_chart_data(num_of_days_ago)
+    start_date = Date.current - num_of_days_ago.to_i
     end_date = Time.current.to_date
     data = []
 

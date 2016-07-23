@@ -27,6 +27,7 @@ class ListsController < ApplicationController
   end
 
   def analytics
+    @days = params[:days_ago] || (Date.current - @list.expenses.map(&:expense_date).min.to_date).to_i
   end
 
   def line_chart
@@ -59,12 +60,12 @@ private
 
   def authorized_list_user
     List.joins(:user).where(
-        [
-            "lists.user_id = ? OR lists.user_id = ? OR users.invited_by_id = ?",
-            current_user.id,
-            current_user.invited_by_id,
-            current_user.id
-        ]
+      [
+        "lists.user_id = ? OR lists.user_id = ? OR users.invited_by_id = ?",
+        current_user.id,
+        current_user.invited_by_id,
+        current_user.id
+      ]
     )
   end
 
