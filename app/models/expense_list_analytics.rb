@@ -1,7 +1,7 @@
 module ExpenseListAnalytics
 
   def total_amount
-    expenses.sum(:amount)
+    expenses.map(&:amount).sum
   end
 
   def max_expense

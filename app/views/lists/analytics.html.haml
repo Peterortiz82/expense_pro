@@ -1,11 +1,15 @@
 #analytics
-  .jumbotron
-    .container
-      %ul.nav.nav-tabs{:role => "tablist"}
+  .container
+    .span8.well
+      %ul.nav.nav-tabs
         %li.active{:role => "presentation"}
-          = link_to 'Expenses', line_chart_list_path(@list), aria: {controls: "Expenses"}, data: {toggle: "tab", target: "Expenses"}, id: "expense_tab"
-        %li{:role => "presentation"}
-          = link_to 'Categories', pie_chart_list_path(@list), aria: {controls: "Categories"}, data: {toggle: "tab", target: "Categories"}, role: "tab"
-        %li{:role => "presentation"}
-          %a{"aria-controls" => "settings", "data-toggle" => "tab", :href => "#settings", :role => "tab"} Settings
+          %a{"aria-controls" => "expenses", "data-toggle" => "tab", :href => "#expenses", :role => "tab"} Expenses
+        %li
+          %a{"aria-controls" => "categories", "data-toggle" => "tab", :href => "#categories", :role => "tab"} Categories
+
+      .tab-content
+        #expenses.tab-pane.active{:role => "tabpanel"}
+          = render "line_chart"
+        #categories.tab-pane{:role => "tabpanel"}
+          = render "pie_chart"
   = link_to 'Back', :back
