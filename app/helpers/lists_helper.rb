@@ -1,7 +1,7 @@
 module ListsHelper
 
-  def expense_line_chart
-    line_chart @list.expense_chart_data
+  def expense_line_chart(num_of_days_ago)
+    line_chart @list.expense_chart_data(num_of_days_ago)
   end
 
   def category_pie_chart

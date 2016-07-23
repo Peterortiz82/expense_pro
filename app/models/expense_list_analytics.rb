@@ -34,8 +34,8 @@ module ExpenseListAnalytics
   # Create all days from the first day an expense was entered for better graphs.
   # if there were no expenses for a particular day we add 0 to that days count.
   #
-  def expense_chart_data
-    start_date = expense_data_grouped_by_expense_date.min[0]
+  def expense_chart_data(num_of_days_ago)
+    start_date = Date.current - num_of_days_ago.to_i
     end_date = Time.current.to_date
     data = []
 
@@ -77,11 +77,10 @@ private
   end
 
   # Returns an array of hashes of expense data =>
-  # [{:category=>"Credit Card/Loan Payments", :sub_category=>"Other", :amount=>45.0},
-  #  {:category=>"Credit Card/Loan Payments", :sub_category=>"Amex", :amount=>33.0},
-  #  {:category=>"Household Items/Supplies", :sub_category=>"Cleaning Supplies", :amount=>74.0},
-  #  {:category=>"Household Items/Supplies", :sub_category=>"Garbage Can", :amount=>82.0},
-  #  {:category=>"Insurance", :sub_category=>"Other", :amount=>38.0}]
+  # [{:category=>"Credit Card/Loan Payments", :expense_date=>Sun, 10 Jul 2016, :amount=>45.0},
+  # {:category=>"Credit Card/Loan Payments", :expense_date=>Sun, 10 Jul 2016, :amount=>33.0},
+  # {:category=>"Household Items/Supplies", :expense_date=>Sun, 10 Jul 2016, :amount=>74.0},
+  # {:category=>"Household Items/Supplies", :expense_date=>Sun, 10 Jul 2016, :amount=>82.0}]
   #
   def expense_data
     expenses.map do |expense|
