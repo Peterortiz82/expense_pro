@@ -1,10 +1,10 @@
 .pie_chart
   .container-fluid
-    .col-md-4
+    .col-md-5
       .h2 Category Breakdown
       %br
       .cat-data-text
-        .h4 Here's where you spend the most
+        .h4 Where you've spent the most
         Category:
         %span= @list.most_spent_by_category[:category]
         %br
@@ -15,7 +15,7 @@
         %span= number_to_currency @list.most_spent_by_category[:amount]
         - if @list.total_individual_categories_count > 1
           %hr
-          .h4 Here's where you spend the least
+          .h4 Where you've spent the least
           Category:
           %span= @list.lowest_spent_by_category[:category]
           %br
@@ -24,6 +24,10 @@
           %br
           Total amount:
           %span= number_to_currency @list.lowest_spent_by_category[:amount]
-    .col-md-8
+    .col-md-7
       %br
       = category_pie_chart
+      .pie-chart-text
+        *Percentages are based on categories not the amount of expenses
+        .br
+        or expense total per category.
