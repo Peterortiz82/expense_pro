@@ -29,6 +29,10 @@ h2 {
 	color: #777777;
 }
 
+.pie_chart .h4 {
+	margin-top: 0px;
+}
+
 .cat-data-text {
 	font-size: 15px;
 	color: #545454;
@@ -344,6 +348,11 @@ button.btn.btn-danger.btn-sm.dropdown-toggle {
 
 	.row {
 		margin-right: -15px;
+	}
+
+	.box {
+		margin: 5px;
+		width: 325px;
 	}
 
 	.col-md-6 {

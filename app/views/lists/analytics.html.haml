@@ -20,10 +20,10 @@
               %li= link_to "3 Months", analytics_list_path(@list, days_ago: 90)
             - if @list.expenses.map(&:expense_date).min <= 180.days.ago
               %li= link_to "6 Months", analytics_list_path(@list, days_ago: 180)
-            %li= link_to "Since First Expense", analytics_list_path(@list, days_ago: (Date.current - @list.expenses.map(&:expense_date).min.to_date).to_i)
+            %li= link_to "All Time", analytics_list_path(@list, days_ago: (Date.current - @list.expenses.map(&:expense_date).min.to_date).to_i)
       .tab-content
         #expenses.tab-pane.active{:role => "tabpanel"}
           = render "line_chart"
         #categories.tab-pane{:role => "tabpanel"}
           = render "pie_chart"
-  = link_to 'Back', :back
+    = link_to "Back to list", list_path(@list), class: "btn btn-primary"

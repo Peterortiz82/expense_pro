@@ -1,10 +1,10 @@
 .pie_chart
   .container-fluid
-    .h2= fa_icon "pie-chart", text: "Category Breakdown"
     .col-md-4
+      .h2 Category Breakdown
       %br
       .cat-data-text
-        .h4 Highest Expense(s) Category
+        .h4 Highest Expense(s)
         Category:
         %span= @list.most_spent_by_category[:category]
         %br
@@ -15,7 +15,7 @@
         %span= number_to_currency @list.most_spent_by_category[:amount]
         - if @list.total_individual_categories_count > 1
           %hr
-          .h4 Lowest Expense(s) Category
+          .h4 Lowest Expense(s)
           Category
           %span= @list.lowest_spent_by_category[:category]
           %br
@@ -25,4 +25,5 @@
           Total amount:
           %span= number_to_currency @list.lowest_spent_by_category[:amount]
     .col-md-8
+      %br
       = category_pie_chart
