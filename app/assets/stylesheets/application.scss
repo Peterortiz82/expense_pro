@@ -1,7 +1,7 @@
 /*
 *= require 'masonry/transitions'
 */
-
+@import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -22,11 +22,25 @@ h2 {
 }
 
 .line_chart .h2 {
-	color: #2E6DA4
+	color: #2e6da4;
 }
 
 .pie_chart .h2 {
-	color: #2E6DA4
+	color: #2e6da4;
+}
+
+.pie_chart .h4 {
+	margin-top: 0px;
+	color: #2e6da4;
+}
+
+.cat-data-text {
+	font-size: 15px;
+	color: #545454;
+}
+
+.cat-data-text span {
+	color: #2e6da4;
 }
 
 h4 {
@@ -39,6 +53,10 @@ th {
 
 td {
 	color: #797777;
+}
+
+.fa {
+	color: #d8d8d8;
 }
 
 a:hover {
@@ -54,6 +72,33 @@ ul.dropdown-menu a {
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
 	border-top: 8px solid #2e6da4;
+}
+
+#analytics .panel-heading {
+	background-color: #2E6DA4;
+}
+
+#analytics .panel-title {
+	color: #FFFFFF;
+	font-size: 20px;
+}
+
+#list-expenses .panel-heading {
+	background-color: #2E6DA4;
+}
+
+#list-expenses .panel-title {
+	color: #FFFFFF;
+	font-size: 20px;
+}
+
+#monthly-bills .panel-heading {
+	background-color: #2E6DA4;
+}
+
+#monthly-bills .panel-title {
+	color: #FFFFFF;
+	font-size: 20px;
 }
 
 .total {
@@ -331,6 +376,11 @@ button.btn.btn-danger.btn-sm.dropdown-toggle {
 
 	.row {
 		margin-right: -15px;
+	}
+
+	.box {
+		margin: 5px;
+		width: 325px;
 	}
 
 	.col-md-6 {

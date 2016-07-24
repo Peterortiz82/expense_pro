@@ -1,4 +1,29 @@
 .pie_chart
   .container-fluid
-    .h2 Category Breakdown
-  = category_pie_chart
+    .col-md-4
+      .h2 Category Breakdown
+      %br
+      .cat-data-text
+        .h4 Highest Expense(s)
+        Category:
+        %span= @list.most_spent_by_category[:category]
+        %br
+        Number of expenses:
+        %span= @list.most_spent_by_category[:category_count]
+        %br
+        Total amount:
+        %span= number_to_currency @list.most_spent_by_category[:amount]
+        - if @list.total_individual_categories_count > 1
+          %hr
+          .h4 Lowest Expense(s)
+          Category
+          %span= @list.lowest_spent_by_category[:category]
+          %br
+          Number of expenses:
+          %span= @list.lowest_spent_by_category[:category_count]
+          %br
+          Total amount:
+          %span= number_to_currency @list.lowest_spent_by_category[:amount]
+    .col-md-8
+      %br
+      = category_pie_chart

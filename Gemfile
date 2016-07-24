@@ -31,6 +31,7 @@ gem 'masonry-rails', '~> 0.2.4'
 gem 'chartkick', '~> 2.0'
 gem 'groupdate', '~> 3.0', '>= 3.0.1'
 gem 'pry-rails', '~> 0.3.4'
+gem "font-awesome-rails"
 
 group :development do
   gem 'awesome_print', '~> 1.6.1'

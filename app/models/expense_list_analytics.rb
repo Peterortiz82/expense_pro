@@ -15,8 +15,22 @@ module ExpenseListAnalytics
     category_data.max_by { |key| key[:amount] }
   end
 
+  def lowest_spent_by_category
+    category_data.min_by { |key| key[:amount] }
+  end
+
+  # This returns the total count of all categories
+  # e.g food: 5, fitness: 3 => total: 8
+  #
   def total_categories_count
     category_data.sum { |category| category[:category_count] }
+  end
+
+  # This returns the total count of individual categories
+  # e.g food: 5, fitness: 3 => total: 2
+  #
+  def total_individual_categories_count
+    expense_data_grouped_by_category.count
   end
 
   def category_percentage_chart_data
@@ -25,13 +39,13 @@ module ExpenseListAnalytics
 
     category_data.map do |category|
       [
-          category[:category],
-          (category[:category_count].to_f / total_categories.to_f) * 100
+        category[:category],
+        ((category[:category_count].to_f / total_categories.to_f) * 100).round(2)
       ]
     end
   end
 
-  # Create all days from the first day an expense was entered for better graphs.
+  # Creates all days from todays date - num_of_day_ago an expense was entered for better graphs.
   # if there were no expenses for a particular day we add 0 to that days count.
   #
   def expense_chart_data(num_of_days_ago)

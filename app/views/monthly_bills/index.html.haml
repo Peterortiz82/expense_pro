@@ -2,31 +2,32 @@
   %h4 No bills to display.
   = link_to 'Add a Bill', new_monthly_bill_path
 -else
-  %h2 Monthly Bills
-  -#.col-md-1-pull-right
-  -#= button_tag 'Search', id: 'search-button', class: 'btn btn-default' do
-  -#  %span.glyphicon.glyphicon-search
-  -#= render 'search'
-  .panel.panel-default
-    .table-responsive
-      %table.table.table-bordered
-        %tr
-          -#%th= sort_link @search, :person, 'Person'
-          %th= sort_link @search, :due_date, 'Due Date'
-          %th  Bill
-          %th= sort_link @search, :amount
-          %th  Edit/Delete
-        - @monthly_bills.each do |bill|
-          %tr
-            %td= bill.due_date.day.ordinalize
-            %td= bill.name
-            %td= number_to_currency bill.amount
-            %td
-              = link_to 'Edit', edit_monthly_bill_path(bill)
-              |
-              = link_to 'Delete', bill, method: :delete, data: {confirm: "Are you sure?"}
-  .well.well-sm
-    .total
-      = "Total: #{number_to_currency @sum_of_bills}"
-  = will_paginate @monthly_bills
-  = link_to 'Add a Bill', new_monthly_bill_path, class: 'btn btn-primary pull-right'
+  #monthly-bills
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          Monthly Bills
+      .panel-body
+        .panel.panel-default
+          .table-responsive
+            %table.table.table-bordered
+              %tr
+                -#%th= sort_link @search, :person, 'Person'
+                %th= sort_link @search, :due_date, 'Due Date'
+                %th  Bill
+                %th= sort_link @search, :amount
+                %th  Edit/Delete
+              - @monthly_bills.each do |bill|
+                %tr
+                  %td= bill.due_date.day.ordinalize
+                  %td= bill.name
+                  %td= number_to_currency bill.amount
+                  %td
+                    = link_to 'Edit', edit_monthly_bill_path(bill)
+                    |
+                    = link_to 'Delete', bill, method: :delete, data: {confirm: "Are you sure?"}
+        .well.well-sm
+          .total
+            = "Total: #{number_to_currency @sum_of_bills}"
+        = will_paginate @monthly_bills
+        = link_to 'Add a Bill', new_monthly_bill_path, class: 'btn btn-primary pull-right'
