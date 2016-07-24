@@ -5,7 +5,7 @@ module ListsHelper
   end
 
   def category_pie_chart
-    pie_chart @list.category_percentage_chart_data, width: "auto"
+    pie_chart @list.category_percentage_chart_data.map, width: "auto", library: { tooltip: { valueSuffix: '%' }}
   end
 
   def show_proper_total
