@@ -3,6 +3,9 @@
     .panel-heading
       %h3.panel-title
         = @list.title
+        .add-expense.pull-right
+          = link_to new_list_expense_path(@list) do
+            %span.glyphicon.glyphicon-plus
     .panel-body
       .panel.panel-default
         .table-responsive

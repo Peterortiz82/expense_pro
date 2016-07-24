@@ -13,3 +13,5 @@
     %br
     = f.submit 'Submit', class: 'btn btn-primary pull-right'
   = link_to "Expense not for today's date? Click here", past_dated_list_expenses_path
+  .br
+  = link_to "back to list", list_path(@list)
