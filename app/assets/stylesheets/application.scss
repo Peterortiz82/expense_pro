@@ -22,15 +22,16 @@ h2 {
 }
 
 .line_chart .h2 {
-	color: #777777;
+	color: #2e6da4;
 }
 
 .pie_chart .h2 {
-	color: #777777;
+	color: #2e6da4;
 }
 
 .pie_chart .h4 {
 	margin-top: 0px;
+	color: #2e6da4;
 }
 
 .cat-data-text {
@@ -71,6 +72,33 @@ ul.dropdown-menu a {
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
 	border-top: 8px solid #2e6da4;
+}
+
+#analytics .panel-heading {
+	background-color: #2E6DA4;
+}
+
+#analytics .panel-title {
+	color: #FFFFFF;
+	font-size: 20px;
+}
+
+#list-expenses .panel-heading {
+	background-color: #2E6DA4;
+}
+
+#list-expenses .panel-title {
+	color: #FFFFFF;
+	font-size: 20px;
+}
+
+#monthly-bills .panel-heading {
+	background-color: #2E6DA4;
+}
+
+#monthly-bills .panel-title {
+	color: #FFFFFF;
+	font-size: 20px;
 }
 
 .total {
