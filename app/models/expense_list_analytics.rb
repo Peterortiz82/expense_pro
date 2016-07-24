@@ -45,7 +45,7 @@ module ExpenseListAnalytics
     end
   end
 
-  # Creates all days from todays date - num_of_day_ago an expense was entered for better graphs.
+  # Creates all days from today's date - num_of_day_ago an expense was entered for better graphs.
   # if there were no expenses for a particular day we add 0 to that days count.
   #
   def expense_chart_data(num_of_days_ago)

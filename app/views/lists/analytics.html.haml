@@ -7,9 +7,17 @@
       .span8.well
         %ul.nav.nav-tabs
           %li.active{:role => "presentation"}
-            %a{"aria-controls" => "expenses", "data-toggle" => "tab", :href => "#expenses", :role => "tab"} Expenses
+            %a{"aria-controls" => "expenses", "data-toggle" => "tab", :href => "#expenses", :role => "tab"}
+              Expenses
+              %span
+                .badge
+                  = @list.expenses.count
           %li
-            %a{"aria-controls" => "categories", "data-toggle" => "tab", :href => "#categories", :role => "tab"} Categories
+            %a{"aria-controls" => "categories", "data-toggle" => "tab", :href => "#categories", :role => "tab"}
+              Categories
+              %span
+                .badge
+                  = @list.total_individual_categories_count
           %li.dropdown.pull-right
             %button.btn.btn-danger.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
               %span.caret
