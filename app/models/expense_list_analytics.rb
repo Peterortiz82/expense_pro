@@ -12,18 +12,18 @@ module ExpenseListAnalytics
   # {:category=>"Household Items/Supplies", :category_count=>3, :amount=>204.0}
   #
   def most_spent_by_category
-    category_data.max_by { |key| key[:amount] }
+    @most_spent ||= category_data.max_by { |key| key[:amount] }
   end
 
   def lowest_spent_by_category
-    category_data.min_by { |key| key[:amount] }
+    @lowest_spent ||= category_data.min_by { |key| key[:amount] }
   end
 
   # This returns the total count of all categories
   # e.g food: 5, fitness: 3 => total: 8
   #
   def total_categories_count
-    category_data.sum { |category| category[:category_count] }
+    @cat_count ||= category_data.sum { |category| category[:category_count] }
   end
 
   # This returns the total count of individual categories
@@ -83,11 +83,11 @@ private
   end
 
   def expense_data_grouped_by_category
-    expense_data.group_by { |expense_data| expense_data[:category] }
+    @expense_data_by_category ||=expense_data.group_by { |expense_data| expense_data[:category] }
   end
 
   def expense_data_grouped_by_expense_date
-    expense_data.group_by { |expense| expense[:expense_date].to_date }
+    @expense_data_by_date ||= expense_data.group_by { |expense| expense[:expense_date].to_date }
   end
 
   # Returns an array of hashes of expense data =>
