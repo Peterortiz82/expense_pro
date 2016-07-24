@@ -1,7 +1,7 @@
 /*
 *= require 'masonry/transitions'
 */
-
+@import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -22,11 +22,20 @@ h2 {
 }
 
 .line_chart .h2 {
-	color: #2E6DA4
+	color: #777777;
 }
 
 .pie_chart .h2 {
-	color: #2E6DA4
+	color: #777777;
+}
+
+.cat-data-text {
+	font-size: 15px;
+	color: #545454;
+}
+
+.cat-data-text span {
+	color: #2e6da4;
 }
 
 h4 {
@@ -39,6 +48,10 @@ th {
 
 td {
 	color: #797777;
+}
+
+.fa {
+	color: #d8d8d8;
 }
 
 a:hover {
