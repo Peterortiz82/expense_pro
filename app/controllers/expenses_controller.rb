@@ -15,7 +15,6 @@ class ExpensesController < ApplicationController
 
   def create
     @expense = Expense.new expense_params
-    @expense.user_id = current_user.id
     @expense.expense_date = Time.current
     @expense.list_id = @list.id
     if @expense.save
@@ -31,7 +30,6 @@ class ExpensesController < ApplicationController
 
   def do_past_dated
     @expense = Expense.new expense_params
-    @expense.user_id = current_user.id
     @expense.list_id = @list.id
     if @expense.save
       redirect_to list_path @list

@@ -40,7 +40,6 @@ class User < ActiveRecord::Base
 
   has_many :lists
   has_many :monthly_bills
-  has_many :expenses
 
   private
 
