@@ -1,13 +1,5 @@
 module ExpenseListAnalytics
 
-  def total_amount
-    expenses.map(&:amount).sum
-  end
-
-  def max_expense
-    expenses.map(&:amount).max
-  end
-
   # Returns the category that has the highest expense total =>
   # {:category=>"Household Items/Supplies", :category_count=>3, :amount=>204.0}
   #

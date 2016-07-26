@@ -10,13 +10,21 @@ module ListsHelper
 
   def show_proper_total
     if !search? || toggle_with_no_search
-      "Total: #{number_to_currency @list.total_amount}"
+      "Total Expenses: #{number_to_currency @list.total_amount}"
     elsif search?
-      "Total: #{number_to_currency @search.result.sum(:amount)}"
+      "Total Expenses: #{number_to_currency @search.result.sum(:amount)}"
     else
-      "Total: #{number_to_currency @expenses.sum(:amount)}"
+      "Total Expenses: #{number_to_currency @expenses.sum(:amount)}"
     end
   end
+
+  def show_remaining_total
+    return unless @list.has_budget?
+
+
+  end
+
+
 
   private
 

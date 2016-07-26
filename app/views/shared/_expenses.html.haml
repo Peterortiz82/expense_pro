@@ -39,6 +39,12 @@
                   |
                   = link_to 'Delete', list_expense_path(@list, expense), method: :delete, data: {confirm: "Are you sure?"}
       .well.well-sm
+        .budget_remaining
+          - if @list.has_budget?
+            - if @list.remaining_budget >= 0
+              = "Remaining: #{number_to_currency @list.remaining_budget}"
+            - elsif @list.remaining_budget < 0
+              %span= "Over Budget: #{number_to_currency @list.remaining_budget}"
         .total
           = show_proper_total
           .pull-right

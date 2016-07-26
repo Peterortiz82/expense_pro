@@ -19,4 +19,22 @@ class List < ActiveRecord::Base
 
   validates :title, presence: true
 
+  def has_budget?
+    budget_amount.present?
+  end
+
+  def remaining_budget
+    return unless has_budget?
+
+    budget_amount - total_amount
+  end
+
+  def total_amount
+    expenses.map(&:amount).sum
+  end
+
+  def max_expense
+    expenses.map(&:amount).max
+  end
+
 end

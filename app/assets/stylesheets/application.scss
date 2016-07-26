@@ -102,6 +102,11 @@ ul.dropdown-menu a {
 	background-color: #2E6DA4;
 }
 
+form#new_list.new_list span {
+	color: #9d9d9d;
+	font-style: normal;
+}
+
 #list-expenses .panel-title {
 	color: #FFFFFF;
 	font-size: 20px;
@@ -188,6 +193,15 @@ span.glyphicon.glyphicon-user {
 
 .field_with_errors .form-control {
 	border: 1px solid #FF0000;
+}
+
+.budget_remaining {
+	font-size: 1.1em;
+	color: #7C7A7A;
+}
+
+.budget_remaining span {
+	color: #FF0000;
 }
 
 #search-button {

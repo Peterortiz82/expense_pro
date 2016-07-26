@@ -2,5 +2,8 @@
   = form_for @list, validate: true do |f|
     = f.label :title
     = f.text_field :title, class: "form-control"
+    = f.label "Set your budget "
+    %span (optional)
+    = f.number_field :budget_amount, class: "form-control", step: 'any'
     %br
     = f.submit 'Submit', class: 'btn btn-primary pull-right'
