@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726014417) do
+ActiveRecord::Schema.define(version: 20160729001352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 20160726014417) do
     t.integer  "invited_by"
     t.boolean  "access_granted", default: false
   end
+
+  create_table "list_permissions", force: :cascade do |t|
+    t.integer  "list_id"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "permission_granted_by"
+    t.boolean  "read_access",           default: false
+    t.boolean  "read_and_write_access", default: false
+  end
+
+  add_index "list_permissions", ["list_id"], name: "index_list_permissions_on_list_id", using: :btree
 
   create_table "lists", force: :cascade do |t|
     t.integer  "user_id"
@@ -99,4 +110,5 @@ ActiveRecord::Schema.define(version: 20160726014417) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "list_permissions", "lists"
 end

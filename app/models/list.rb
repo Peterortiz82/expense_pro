@@ -14,6 +14,7 @@ class List < ActiveRecord::Base
 
   belongs_to :user
   has_many :expenses
+  has_many :list_permissions
 
   default_scope { order('created_at DESC') }
 
