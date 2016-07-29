@@ -18,6 +18,10 @@ module ListsHelper
     end
   end
 
+  def shared_by_name(list)
+    User.where(id: list.list_permissions.first.permission_granted_by).first.display_name
+  end
+
   private
 
   def toggle_with_no_search

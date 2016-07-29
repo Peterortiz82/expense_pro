@@ -9,6 +9,7 @@
           .panel-body.center
             %h3= link_to list.title, list_path(list)
             .time
+              = "shared by: #{shared_by_name(list)}"
               %P= "Created #{time_ago_in_words list.created_at} ago"
             .actions.pull-left
               %p= "Total: #{number_to_currency list.total_amount}"
@@ -20,4 +21,4 @@
               = link_to list, method: :delete, data: { confirm: 'Are you sure?' } do
                 %span.glyphicon.glyphicon-trash
                 Delete
-  -#= will_paginate @shared_lists
+  = will_paginate @shared_lists

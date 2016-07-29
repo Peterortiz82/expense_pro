@@ -1,5 +1,4 @@
 class ListsController < ApplicationController
-  require 'will_paginate/array'
 
   before_action :set_list, only: [:edit, :show, :destroy, :update, :analytics, :line_chart, :pie_chart]
   before_action :authenticate_user!
@@ -39,7 +38,7 @@ class ListsController < ApplicationController
   end
 
   def shared_lists
-    @shared_lists = permissions_granted_lists
+    @shared_lists = permissions_granted_lists.paginate(page: params[:page], per_page: 15)
   end
 
   def edit
