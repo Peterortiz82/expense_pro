@@ -1,9 +1,11 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [ :edit, :show, :destroy, :update, :analytics, :line_chart, :pie_chart]
+  require 'will_paginate/array'
+
+  before_action :set_list, only: [:edit, :show, :destroy, :update, :analytics, :line_chart, :pie_chart]
   before_action :authenticate_user!
 
   def index
-    @lists = authorized_list_user.paginate(page: params[:page], per_page: 15)
+    @lists = current_user.lists.paginate(page: params[:page], per_page: 15)
   end
 
   def new
@@ -36,6 +38,10 @@ class ListsController < ApplicationController
   def pie_chart
   end
 
+  def shared_lists
+    @shared_lists = permissions_granted_lists
+  end
+
   def edit
   end
 
@@ -58,15 +64,19 @@ private
     @list = List.find params[:id]
   end
 
-  def authorized_list_user
-    List.joins(:user).where(
-      [
-        "lists.user_id = ? OR lists.user_id = ? OR users.invited_by_id = ?",
-        current_user.id,
-        current_user.invited_by_id,
-        current_user.id
-      ]
-    )
+  def permissions_granted_lists
+    lists = []
+
+    permissions_lists_for_current_user.select do |permissions|
+      list = List.where(id: permissions.list_id)
+      lists << list.first
+    end
+
+    lists
+  end
+
+  def permissions_lists_for_current_user
+    ListPermission.where(permission_granted_to: current_user.id)
   end
 
   def list_params

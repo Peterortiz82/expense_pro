@@ -18,14 +18,6 @@ module ListsHelper
     end
   end
 
-  def show_remaining_total
-    return unless @list.has_budget?
-
-
-  end
-
-
-
   private
 
   def toggle_with_no_search

@@ -1,0 +1,23 @@
+-if @shared_lists.empty?
+  %h4 No lists have been shared with you at this time.
+  = link_to "Back to lists", lists_path
+-else
+  #lists.transitions-enabled
+    - @shared_lists.each do |list|
+      .box
+        .panel.panel-default
+          .panel-body.center
+            %h3= link_to list.title, list_path(list)
+            .time
+              %P= "Created #{time_ago_in_words list.created_at} ago"
+            .actions.pull-left
+              %p= "Total: #{number_to_currency list.total_amount}"
+            .pull-right
+              = link_to edit_list_path(list) do
+                %span.glyphicon.glyphicon-edit
+                Edit
+              |
+              = link_to list, method: :delete, data: { confirm: 'Are you sure?' } do
+                %span.glyphicon.glyphicon-trash
+                Delete
+  -#= will_paginate @shared_lists

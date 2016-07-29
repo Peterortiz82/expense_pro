@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729001352) do
+ActiveRecord::Schema.define(version: 20160729003756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,18 +34,11 @@ ActiveRecord::Schema.define(version: 20160729001352) do
     t.integer  "list_id"
   end
 
-  create_table "list_accesses", force: :cascade do |t|
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.integer  "list_id"
-    t.integer  "invited_by"
-    t.boolean  "access_granted", default: false
-  end
-
   create_table "list_permissions", force: :cascade do |t|
     t.integer  "list_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.integer  "permission_granted_to"
     t.integer  "permission_granted_by"
     t.boolean  "read_access",           default: false
     t.boolean  "read_and_write_access", default: false
