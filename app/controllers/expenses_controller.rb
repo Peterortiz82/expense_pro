@@ -5,7 +5,7 @@ class ExpensesController < ApplicationController
 
   def index
     @all_expenses = @list.expenses
-    @search = @all_expenses.ransack(params[:q])
+    @search = @all_expenses.includes(:user).ransack(params[:q])
     @expenses = @search.result.paginate(page: params[:page], per_page: 15)
   end
 
@@ -16,6 +16,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new expense_params
     @expense.expense_date = Time.current
+    @expense.user_id = current_user.id
     @expense.list_id = @list.id
     if @expense.save
       redirect_to list_path @list
@@ -30,6 +31,7 @@ class ExpensesController < ApplicationController
 
   def do_past_dated
     @expense = Expense.new expense_params
+    @expense.user_id = current_user.id
     @expense.list_id = @list.id
     if @expense.save
       redirect_to list_path @list

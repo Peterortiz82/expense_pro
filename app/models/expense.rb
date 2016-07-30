@@ -22,6 +22,7 @@ class Expense < ActiveRecord::Base
   validates :description, length: { maximum: 55 }
   validate :must_have_a_category
 
+  belongs_to :user
   belongs_to :list
   belongs_to :category
   belongs_to :sub_category

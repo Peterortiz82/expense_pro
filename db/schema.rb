@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729003756) do
+ActiveRecord::Schema.define(version: 20160730014123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160729003756) do
     t.float    "amount"
     t.datetime "expense_date"
     t.integer  "list_id"
+    t.integer  "user_id"
   end
 
   create_table "list_permissions", force: :cascade do |t|
