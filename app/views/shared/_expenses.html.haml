@@ -18,7 +18,7 @@
               %th  Expense
               %th= sort_link @search, :amount
               %th  Description
-              - if list_creator || read_and_write_access?(@list)
+              - if list_creator(@list) || read_and_write_access?(@list)
                 %th  Edit/Delete
             - @expenses.each do |expense|
               %tr
@@ -35,7 +35,7 @@
                   %td= expense.name
                 %td= number_to_currency expense.amount
                 %td= expense.description.present? ? (auto_link expense.description) : 'N/A'
-                - if list_creator || read_and_write_access?(@list)
+                - if list_creator(expense.list) || read_and_write_access?(@list)
                   %td
                     = link_to 'Edit', edit_list_expense_path(@list, expense)
                     |
@@ -53,5 +53,5 @@
             %span.glyphicon.glyphicon-stats
             = link_to 'Analytics', analytics_list_path(@list)
       = will_paginate @expenses
-      - if list_creator || read_and_write_access?(@list)
+      - if list_creator(@list) || read_and_write_access?(@list)
         = link_to 'Log Expense', new_list_expense_path(@list), class: 'btn btn-primary pull-right'

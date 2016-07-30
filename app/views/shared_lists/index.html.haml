@@ -13,12 +13,13 @@
               %P= "Created #{time_ago_in_words list.created_at} ago"
             .actions.pull-left
               %p= "Total: #{number_to_currency list.total_amount}"
-            .pull-right
-              = link_to edit_list_path(list) do
-                %span.glyphicon.glyphicon-edit
-                Edit
-              |
-              = link_to list, method: :delete, data: { confirm: 'Are you sure?' } do
-                %span.glyphicon.glyphicon-trash
-                Delete
+            - if list_creator(list) || read_and_write_access?(list)
+              .pull-right
+                = link_to edit_list_path(list) do
+                  %span.glyphicon.glyphicon-edit
+                  Edit
+                |
+                = link_to list, method: :delete, data: { confirm: 'Are you sure?' } do
+                  %span.glyphicon.glyphicon-trash
+                  Delete
   = will_paginate @shared_lists

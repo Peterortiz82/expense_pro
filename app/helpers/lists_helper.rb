@@ -27,11 +27,11 @@ module ListsHelper
       list_permission.permission_granted_to == current_user.id
     end
 
-    permission_access.read_and_write_access == true
+    permission_access.read_and_write_access.present?
   end
 
-  def list_creator
-    @list.user_id == current_user.id
+  def list_creator(list)
+    list.user_id == current_user.id
   end
 
   private
