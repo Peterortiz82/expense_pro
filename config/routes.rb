@@ -3,8 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  match 'shared_lists' => "lists#shared_lists", :as => :shared ,via: [:get]
-
   resources :lists do
       get :analytics, on: :member
       get :pie_chart, on: :member
@@ -17,6 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :shared_lists, only: [:index]
   resources :monthly_bills
 
 end

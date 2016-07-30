@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
-
-  before_action :set_list, only: [:edit, :show, :destroy, :update, :analytics, :line_chart, :pie_chart]
+  before_action :set_list, only: [:edit, :show, :destroy, :update, :analytics]
   before_action :authenticate_user!
+  before_action :redirect_if_user_is_not_authorized, only: [:edit, :show, :analytics]
 
   def index
     @lists = current_user.lists.paginate(page: params[:page], per_page: 15)
@@ -31,16 +31,6 @@ class ListsController < ApplicationController
     @days = params[:days_ago] || (Date.current - @list.expenses.map(&:expense_date).min.to_date).to_i
   end
 
-  def line_chart
-  end
-
-  def pie_chart
-  end
-
-  def shared_lists
-    @shared_lists = permissions_granted_lists.paginate(page: params[:page], per_page: 15)
-  end
-
   def edit
   end
 
@@ -59,23 +49,25 @@ class ListsController < ApplicationController
 
 private
 
-  def set_list
-    @list = List.find params[:id]
+  def redirect_if_user_is_not_authorized
+    unless authotized_list_user
+      flash[:alert] = "You do not have access to that list!"
+      redirect_to :root
+    end
   end
 
-  def permissions_granted_lists
-    lists = []
-
-    permissions_lists_for_current_user.select do |permissions|
-      list = List.where(id: permissions.list_id)
-      lists << list.first
+  def authotized_list_user
+    if @list.list_permissions.present?
+      user_has_permissions = @list.list_permissions.detect do |permission|
+        permission.permission_granted_to == current_user.id
+      end
     end
 
-    lists
+    current_user.id == @list.user_id || user_has_permissions
   end
 
-  def permissions_lists_for_current_user
-    ListPermission.where(permission_granted_to: current_user.id)
+  def set_list
+    @list = List.find params[:id]
   end
 
   def list_params

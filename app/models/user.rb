@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   has_many :lists
   has_many :monthly_bills
 
-  private
+private
 
   def generate_display_name
     return unless first_name and last_name

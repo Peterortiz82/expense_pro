@@ -22,6 +22,18 @@ module ListsHelper
     User.where(id: list.list_permissions.first.permission_granted_by).first.display_name
   end
 
+  def read_and_write_access?(list)
+    permission_access = list.list_permissions.detect do |list_permission|
+      list_permission.permission_granted_to == current_user.id
+    end
+
+    permission_access.read_and_write_access == true
+  end
+
+  def list_creator
+    @list.user_id == current_user.id
+  end
+
   private
 
   def toggle_with_no_search

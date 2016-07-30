@@ -39,6 +39,7 @@ class ExpensesController < ApplicationController
   end
 
   def edit
+    redirect_if_user_is_not_authorized
   end
 
   def update
@@ -55,6 +56,23 @@ class ExpensesController < ApplicationController
   end
 
 private
+
+  def redirect_if_user_is_not_authorized
+    unless authotized_list_user
+      flash[:alert] = "You do not have access to that list!"
+      redirect_to :root
+    end
+  end
+
+  def authotized_list_user
+    if @expense.list.list_permissions.present?
+      user_has_permissions = @list.list_permissions.detect do |permission|
+        permission.permission_granted_to == current_user.id
+      end
+    end
+
+    current_user.id == @list.user_id || user_has_permissions
+  end
 
   def set_expense
     @expense = Expense.find params[:id]
