@@ -1,0 +1,9 @@
+#errors
+  .icon
+    = fa_icon "frown-o"
+  .error-type
+    %h1 500
+  .error-title
+    %h3= "Unexpected Error #{fa_icon 'frown-o'}".html_safe
+  .error-description
+    %p= "An error occurred and your request could not be completed, go #{link_to 'back', :back}.".html_safe

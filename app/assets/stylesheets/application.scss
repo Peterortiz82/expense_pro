@@ -58,6 +58,26 @@ h2 {
 	color: #2e6da4;
 }
 
+#errors {
+	text-align: center;
+}
+
+#error, h1 {
+	font-size: 200px;
+	color: #777777;
+}
+
+#error, h3 {
+	font-size: 30px;
+	color: #ccc;
+}
+
+#error, p {
+	color: #777777;
+	font-size: larger;
+	margin-top: 20px;
+}
+
 h4 {
 	color: #525252;
 }
