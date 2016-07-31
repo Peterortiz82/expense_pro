@@ -3,7 +3,7 @@ class ListPermissionsController < ApplicationController
 
   def index
     @list_permission = ListPermission.new
-    @invited_users = User.where(invited_by_id: current_user.id)
+    @invited_users = User.where.not(invitation_accepted_at: nil).where(invited_by_id: current_user.id)
     @list_permissions = @list.list_permissions
   end
 

@@ -8,7 +8,7 @@ module ListPermissionsHelper
     granted_permissions.count < 1
   end
 
-  def list_has_users_with_no_permissions(list, invited_users)
+  def list_has_users_without_permissions(list, invited_users)
     permissions = []
 
     invited_users.each do |user|
@@ -17,7 +17,7 @@ module ListPermissionsHelper
       end
     end
 
-    invited_users.count >= permissions.count
+    invited_users.count > permissions.count
   end
 
 end
