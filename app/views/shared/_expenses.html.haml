@@ -5,7 +5,7 @@
         = list_title(@list)
         - if list_creator(@list)
           .add-expense.pull-right
-            = link_to list_list_permissions_path(@list) do
+            = link_to list_list_permissions_path(@list), "data-no-turbolink" => "true" do
               %span.glyphicon.glyphicon-plus
     .panel-body
       .panel.panel-default
