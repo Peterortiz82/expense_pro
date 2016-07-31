@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get :analytics, on: :member
     get :pie_chart, on: :member
     get :line_chart, on: :member
-    resources :list_permissions, only: [:index, :new, :create, :destroy]
+    resources :list_permissions, only: [:index, :create, :destroy]
     resources :expenses do
       collection do
         get :past_dated
