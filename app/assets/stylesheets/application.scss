@@ -62,17 +62,17 @@ h2 {
 	text-align: center;
 }
 
-#error, h1 {
+.error-type h1 {
 	font-size: 200px;
 	color: #777777;
 }
 
-#error, h3 {
+.error-title h3 {
 	font-size: 30px;
 	color: #ccc;
 }
 
-#error, p {
+.error-description p {
 	color: #777777;
 	font-size: larger;
 	margin-top: 20px;
