@@ -1,0 +1,22 @@
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title
+      ="#{@list.title} (Permissions)"
+  .panel-body
+    .panel.panel-default
+      .table-responsive
+        %table.table.table-bordered
+          %tr
+            %th Name
+            %th Granted on
+            %th Read only
+            %th Read & write
+            %th Revoke access
+          - @list_permissions.each do |permission|
+            %tr
+              %td= permission.user.display_name
+              %td= permission.created_at.strftime("%b %d, %Y")
+              %td= human_boolean(permission.read_access)
+              %td= human_boolean(permission.read_and_write_access)
+              %td= link_to 'Delete', list_list_permission_path(@list, permission), method: :delete, data: {confirm: "Are you sure?"}
+

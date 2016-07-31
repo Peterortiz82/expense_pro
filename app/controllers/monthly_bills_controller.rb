@@ -25,7 +25,7 @@ class MonthlyBillsController < ApplicationController
   def destroy
     @monthly_bill = MonthlyBill.find params[:id]
     @monthly_bill.destroy
-    redirect_to :back
+    redirect_to monthly_bills_path
   end
 
   private

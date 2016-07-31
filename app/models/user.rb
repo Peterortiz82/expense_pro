@@ -41,6 +41,14 @@ class User < ActiveRecord::Base
   has_many :lists
   has_many :monthly_bills
   has_many :expenses
+  has_many :list_permissions, foreign_key: :permission_granted_by
+
+  # Display_name does not generate when a user signs up through Devise Inevitable?
+  # This is used to protect from nil display_name values.
+  #
+  def display_name
+    "#{first_name} #{last_name}"
+  end
 
 private
 

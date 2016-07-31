@@ -226,6 +226,21 @@ span.glyphicon.glyphicon-user {
 	font-size: 1.5em;
 }
 
+.btn-link {
+	color: #337ab7;
+	font-weight: normal;
+	border: none;
+	padding: 0px;
+}
+
+.btn-link:hover {
+	color: #418CC6;
+	background-color: transparent;
+	border: none;
+	padding: 0px;
+	text-decoration: none;
+}
+
 .btn-danger {
 	margin-top: 10px;
 	background-color: white;

@@ -1,14 +1,34 @@
 #list-permissions
-  .panel.panel-default
-    .panel-heading
-      %h3.panel-title
-        Grant permissions
-    .panel-body
-      .panel.panel-default
-        .table-responsive
-          %table.table.table-bordered
-            %tr
-              %th Name
-              %th Accepted invitation date
-              %th Grant Access
-              %th type
+  - if !@invited_users.present?
+    %h4 Looks like no one has accepted your invitation yet.
+    = link_to 'Back to list', @list
+    = link_to "Send Invite", new_user_invitation_path
+  - else
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          Invited Users
+      .panel-body
+        .panel.panel-default
+          .table-responsive
+            %table.table.table-bordered
+              %tr
+                %th Name
+                %th Invitation accepted on
+                %th Read only
+                %th Read & write
+                %th Grant access
+              - @invited_users.each do |user|
+                - if permissions_have_not_been_granted(@list, user)
+                  = form_for [@list, @list_permission], validate: true do |f|
+                    %tr
+                      %td= "#{user.first_name} #{user.last_name}"
+                      %td= user.invitation_accepted_at.strftime("%b %d, %Y")
+                      %td= f.check_box :read_access, required: false, label: false, as: :boolean
+                      %td= f.check_box :read_and_write_access, required: false, label: false, as: :boolean
+                      = hidden_field_tag :invited_user_id , user.id
+                      %td= f.submit 'Submit', class: "btn btn-link"
+  - if @list.has_permissions?
+    = render 'permissions_granted'
+  = link_to 'Back to list', @list, class: "btn btn-primary"
+

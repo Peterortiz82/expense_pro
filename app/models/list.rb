@@ -20,6 +20,10 @@ class List < ActiveRecord::Base
 
   validates :title, presence: true
 
+  def has_permissions?
+    list_permissions.count > 0
+  end
+
   def has_budget?
     budget_amount.present?
   end
