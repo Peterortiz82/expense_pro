@@ -10,7 +10,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :mobile_device?
 
-  protected
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
+protected
 
   def invitaion_permitted_parameters
     devise_parameter_sanitizer.for(:accept_invitation) do |u|

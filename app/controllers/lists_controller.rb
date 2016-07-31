@@ -51,8 +51,7 @@ private
 
   def redirect_if_user_is_not_authorized
     unless authotized_list_user
-      flash[:alert] = "You do not have access to that list!"
-      redirect_to :root
+      not_found
     end
   end
 
