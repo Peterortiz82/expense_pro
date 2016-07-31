@@ -9,12 +9,11 @@ module ListPermissionsHelper
   end
 
   def list_has_users_without_permissions(list, invited_users)
+    user_ids = invited_users.map(&:id)
     permissions = []
 
-    invited_users.each do |user|
-      list.list_permissions.select do |permission|
-        permissions << permission.permission_granted_to == user.id
-      end
+    list.list_permissions.select do |permission|
+      permissions << user_ids.include?(permission.permission_granted_to)
     end
 
     invited_users.count > permissions.count
