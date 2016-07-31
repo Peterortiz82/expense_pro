@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   # This is used to protect from nil display_name values.
   #
   def display_name
-    "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}".titleize
   end
 
 private

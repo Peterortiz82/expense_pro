@@ -2,10 +2,11 @@
   .panel.panel-default
     .panel-heading
       %h3.panel-title
-        = @list.title
-        .add-expense.pull-right
-          = link_to list_list_permissions_path(@list) do
-            %span.glyphicon.glyphicon-plus
+        = list_title(@list)
+        - if list_creator(@list)
+          .add-expense.pull-right
+            = link_to list_list_permissions_path(@list) do
+              %span.glyphicon.glyphicon-plus
     .panel-body
       .panel.panel-default
         .table-responsive

@@ -18,6 +18,14 @@ module ListsHelper
     end
   end
 
+  def list_title(list)
+    if list.has_budget?
+      "#{list.title} <span>(budget: #{number_to_currency list.budget_amount})</span>".html_safe
+    else
+      list.title
+    end
+  end
+
   def shared_by_name(list)
     User.where(id: list.list_permissions.first.permission_granted_by).first.display_name
   end

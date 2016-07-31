@@ -11,12 +11,12 @@
             %th Granted on
             %th Read only
             %th Read & write
-            %th Revoke access
+            %th Revoke permissions
           - @list_permissions.each do |permission|
             %tr
               %td= permission.user.display_name
               %td= permission.created_at.strftime("%b %d, %Y")
               %td= human_boolean(permission.read_access)
               %td= human_boolean(permission.read_and_write_access)
-              %td= link_to 'Delete', list_list_permission_path(@list, permission), method: :delete, data: {confirm: "Are you sure?"}
+              %td= link_to 'Delete', list_list_permission_path(@list, permission), method: :delete, data: {confirm: "Are you sure you want to revoke all permissions for #{permission.user.display_name}?"}
 

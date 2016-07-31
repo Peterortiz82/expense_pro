@@ -1,13 +1,14 @@
 #list-permissions
   - if !@invited_users.present?
-    %h4 Looks like no one has accepted your invitation yet.
+    %h4= "If you would like to give someone access to #{@list.title} click the invite link below."
     = link_to 'Back to list', @list
-    = link_to "Send Invite", new_user_invitation_path
-  - else
+    |
+    = link_to "Send Invitation", new_user_invitation_path
+  - elsif list_has_users_with_no_permissions(@list, @invited_users)
     .panel.panel-default
       .panel-heading
         %h3.panel-title
-          Invited Users
+          = "Grant Permissions for #{@list.title}"
       .panel-body
         .panel.panel-default
           .table-responsive
@@ -17,9 +18,9 @@
                 %th Invitation accepted on
                 %th Read only
                 %th Read & write
-                %th Grant access
+                %th Grant permissions
               - @invited_users.each do |user|
-                - if permissions_have_not_been_granted(@list, user)
+                - if permissions_have_not_been_granted_to_user(@list, user)
                   = form_for [@list, @list_permission], validate: true do |f|
                     %tr
                       %td= "#{user.first_name} #{user.last_name}"
@@ -30,5 +31,5 @@
                       %td= f.submit 'Submit', class: "btn btn-link"
   - if @list.has_permissions?
     = render 'permissions_granted'
-  = link_to 'Back to list', @list, class: "btn btn-primary"
+    = link_to 'Back to list', @list, class: "btn btn-primary"
 
