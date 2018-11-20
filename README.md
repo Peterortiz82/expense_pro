@@ -1,6 +1,6 @@
 # Expense Pro
 
-A simple solution for tracking expenses. Visit [http://expensify.herokuapp.com/](expense-pro) to try it out!
+A simple solution for tracking expenses. Visit [expense-pro](http://expensify.herokuapp.com/) to try it out!
 
 ---
 
