@@ -69,7 +69,7 @@ GEM
     capybara-webkit (1.7.1)
       capybara (>= 2.3.0, < 2.6.0)
       json
-    chartkick (2.0.0)
+    chartkick (3.2.0)
     chronic (0.10.2)
     client_side_validations (4.2.5)
       jquery-rails (>= 3.1.2, < 5.0.0)
@@ -336,7 +336,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.5.0)
   capybara-webkit (~> 1.7.1)
-  chartkick (~> 2.0)
+  chartkick (~> 3.2)
   chronic (~> 0.10.2)
   client_side_validations (~> 4.2, >= 4.2.5)
   coffee-rails (~> 4.1.0)
