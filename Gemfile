@@ -16,7 +16,7 @@ gem 'haml-rails', '~> 0.9.0'
 gem 'nilify_blanks', '~> 1.2.1'
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'devise',           '~> 3.5.2'
+gem 'devise',           '~> 4.7.1'
 gem 'devise_invitable', '~> 1.5.2'
 gem 'will_paginate', '~> 3.0', '>= 3.0.7'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
