@@ -28,7 +28,7 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'rollout', '~> 2.3'
 gem 'redis', '~> 3.3'
 gem 'masonry-rails', '~> 0.2.4'
-gem 'chartkick', '~> 2.0'
+gem 'chartkick', '~> 3.4'
 gem 'groupdate', '~> 3.0', '>= 3.0.1'
 gem 'pry-rails', '~> 0.3.4'
 gem "font-awesome-rails"
