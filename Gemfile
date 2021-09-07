@@ -35,7 +35,7 @@ gem "font-awesome-rails"
 
 group :development do
   gem 'awesome_print', '~> 1.6.1'
-  gem 'better_errors', '~> 2.1.1'
+  gem 'better_errors', '~> 2.8.0'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'guard-rspec', '~> 4.6.4'
   gem 'parallel_tests', '~> 1.9.0'
